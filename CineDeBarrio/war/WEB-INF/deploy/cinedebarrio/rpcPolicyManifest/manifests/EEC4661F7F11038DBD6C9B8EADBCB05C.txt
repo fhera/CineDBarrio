@@ -1,0 +1,2 @@
+serviceClass: aiss.client.GreetingService
+path: 897042592C6007569D42034245216E4A.gwt.rpc

@@ -8,9 +8,6 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootPanel;
 
-/**
- * Entry point classes define <code>onModuleLoad()</code>.
- */
 public class CineDeBarrio implements EntryPoint {
 
 	HorizontalPanel contenidoSelector = new HorizontalPanel();

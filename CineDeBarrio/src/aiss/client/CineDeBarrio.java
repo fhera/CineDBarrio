@@ -7,13 +7,14 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class CineDeBarrio implements EntryPoint {
 
 	HorizontalPanel contenidoSelector = new HorizontalPanel();
 
 	public void onModuleLoad() {
-		initHtml();
+		init();
 		go("init", new HashMap<String, String>());
 
 	}
@@ -28,9 +29,9 @@ public class CineDeBarrio implements EntryPoint {
 		}
 	}
 
-	public HTMLPanel initHtml() {
-		String htmlString = "Hola mundo";
-		final HTMLPanel dock = new HTMLPanel(htmlString);
-		return dock;
+	public void init() {
+		final VerticalPanel mainPanel = new VerticalPanel();
+		
+		
 	}
 }

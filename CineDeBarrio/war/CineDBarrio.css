@@ -1,0 +1,25 @@
+/** Add css rules here for your application. */
+
+*{
+    margin: 0px;
+}
+h1{
+	float: left;
+	width:100%;
+	padding: 20px 0px 50px;
+	font-size: 2em;
+	font-weight: bold;
+	color: white;
+	text-align: left;
+	background: -moz-linear-gradient(#3f3f3f,  #9c9c9c, #3f3f3f);
+}
+#busqueda {
+	top: 0px;
+	float: right;
+}
+
+footer {
+	position: relative;
+	left: 50%;
+	top: 50%;
+}

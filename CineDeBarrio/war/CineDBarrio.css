@@ -6,16 +6,18 @@
 h1{
 	float: left;
 	width:100%;
-	padding: 20px 0px 50px;
+	padding: 10px 5px 10px;
 	font-size: 2em;
 	font-weight: bold;
 	color: white;
 	text-align: left;
-	background: -moz-linear-gradient(#3f3f3f,  #9c9c9c, #3f3f3f);
+	background: -moz-linear-gradient(#3f3f3f,  #0e0e0e, #3f3f3f);
 }
 #busqueda {
-	top: 0px;
-	float: right;
+	position: absolute;
+	padding: 10px 5px 10px;
+	right: 5px;
+	z-index:10;
 }
 
 footer {

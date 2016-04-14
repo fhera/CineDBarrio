@@ -1,0 +1,40 @@
+/** Add css rules here for your application. */
+* {
+	margin: 0px;
+}
+
+h1 {
+	float: left;
+	width: 99.3%;
+	padding: 1px 5px 1px;
+	font-size: 2em;
+	font-weight: bold;
+	color: white;
+	text-align: left;
+	background: -moz-linear-gradient(#3f3f3f, #0e0e0e, #3f3f3f);
+	background: -webkit-linear-gradient(#3f3f3f, #0e0e0e, #3f3f3f);
+	background: -o-linear-gradient(#3f3f3f, #0e0e0e, #3f3f3f);
+}
+
+#busqueda {
+	position: fixed;
+	float: right;
+	padding: 1px 4px 0px;
+	margin-right: 1%;
+	top: 9px;
+	right: 70px;
+}
+#busqueda .boton{
+	right:0;
+}
+
+#peliculas{
+	position: fixed;
+	top: 3em;
+}
+
+footer {
+	position: absolute;
+	left: 45%;
+	top: 80%;
+}

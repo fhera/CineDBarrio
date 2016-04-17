@@ -1,6 +1,7 @@
 package aiss.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
@@ -17,10 +18,12 @@ public class CineDeBarrio1 implements EntryPoint {
 	private Label etiquetaEstado = new Label();
 	private HorizontalPanel searchPanel = new HorizontalPanel();
 
-	// Aquí vamos a añadir el cuerpo del HTML, tales como estrenos, peliculas y
-	// series.
+	// En indexTable vamos a añadir el cuerpo del HTML, tales como estrenos,
+	// peliculas y series.
 
 	private FlexTable indexTable = new FlexTable();
+
+	private final APIServiceAsync servicio = GWT.create(APIService.class);
 
 	public void onModuleLoad() {
 
@@ -49,7 +52,6 @@ public class CineDeBarrio1 implements EntryPoint {
 
 			}
 		}
-		indexTable.setText(0, 0, "Peli 1");
 
 		RootPanel.get("peliculas").add(indexTable);
 

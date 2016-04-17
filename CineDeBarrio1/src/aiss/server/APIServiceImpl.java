@@ -1,14 +1,24 @@
 package aiss.server;
 
-import aiss.client.APIService;
+import org.restlet.resource.ClientResource;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import aiss.client.APIService;
+import aiss.shared.dominio.tmdb.Pelicula;
+
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-public class APIServiceImpl extends RemoteServiceServlet implements APIService{
+@SuppressWarnings("serial")
+public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 
-	private static final long serialVersionUID = 1L;
+	@Override
+	public Pelicula getPelisMejoresValoradas() {
 
-	
-	
+		ClientResource cr = new ClientResource(
+				"http://api.themoviedb.org/3/movie/top_rated?api_key=08f0211eeab73ad077f12a6a627118f8");
+
+		Pelicula peli = cr.get(Pelicula.class);
+		return peli;
+
+	}
+
 }

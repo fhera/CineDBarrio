@@ -1,88 +1,88 @@
-
 package aiss.shared.dominio.tmdb;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Generated;
 
-@Generated("org.jsonschema2pojo")
-public class Pelicula {
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-    private Integer page;
-    private List<Result> results = new ArrayList<Result>();
-    private Integer totalResults;
-    private Integer totalPages;
+import aiss.shared.dominio.tmdb.Result;
 
-    /**
-     * 
-     * @return
-     *     The page
-     */
-    public Integer getPage() {
-        return page;
-    }
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Pelicula implements Serializable {
 
-    /**
-     * 
-     * @param page
-     *     The page
-     */
-    public void setPage(Integer page) {
-        this.page = page;
-    }
+	private static final long serialVersionUID = 6682667437260316383L;
+	private Integer page;
+	private List<Result> results = new ArrayList<Result>();
+	private Integer totalResults;
+	private Integer totalPages;
 
-    /**
-     * 
-     * @return
-     *     The results
-     */
-    public List<Result> getResults() {
-        return results;
-    }
+	/**
+	 * 
+	 * @return The page
+	 */
+	public Integer getPage() {
+		return page;
+	}
 
-    /**
-     * 
-     * @param results
-     *     The results
-     */
-    public void setResults(List<Result> results) {
-        this.results = results;
-    }
+	/**
+	 * 
+	 * @param page
+	 *            The page
+	 */
+	public void setPage(Integer page) {
+		this.page = page;
+	}
 
-    /**
-     * 
-     * @return
-     *     The totalResults
-     */
-    public Integer getTotalResults() {
-        return totalResults;
-    }
+	/**
+	 * 
+	 * @return The results
+	 */
+	public List<Result> getResults() {
+		return results;
+	}
 
-    /**
-     * 
-     * @param totalResults
-     *     The total_results
-     */
-    public void setTotalResults(Integer totalResults) {
-        this.totalResults = totalResults;
-    }
+	/**
+	 * 
+	 * @param results
+	 *            The results
+	 */
+	public void setResults(List<Result> results) {
+		this.results = results;
+	}
 
-    /**
-     * 
-     * @return
-     *     The totalPages
-     */
-    public Integer getTotalPages() {
-        return totalPages;
-    }
+	/**
+	 * 
+	 * @return The totalResults
+	 */
+	public Integer getTotalResults() {
+		return totalResults;
+	}
 
-    /**
-     * 
-     * @param totalPages
-     *     The total_pages
-     */
-    public void setTotalPages(Integer totalPages) {
-        this.totalPages = totalPages;
-    }
+	/**
+	 * 
+	 * @param totalResults
+	 *            The total_results
+	 */
+	public void setTotalResults(Integer totalResults) {
+		this.totalResults = totalResults;
+	}
+
+	/**
+	 * 
+	 * @return The totalPages
+	 */
+	public Integer getTotalPages() {
+		return totalPages;
+	}
+
+	/**
+	 * 
+	 * @param totalPages
+	 *            The total_pages
+	 */
+	public void setTotalPages(Integer totalPages) {
+		this.totalPages = totalPages;
+	}
 
 }

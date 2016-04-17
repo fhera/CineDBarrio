@@ -1,11 +1,16 @@
 package aiss.client;
 
+import aiss.shared.dominio.tmdb.Pelicula;
+import aiss.shared.dominio.tmdb.Result;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -45,15 +50,43 @@ public class CineDeBarrio1 implements EntryPoint {
 
 		RootPanel.get("busqueda").add(searchPanel);
 
-		// Parte donde se muestra las pelis.
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
-				indexTable.setText(i, j, "Peli " + i + j);
+		// // Parte donde se muestra las pelis.
+		// for (int i = 0; i < 10; i++) {
+		// for (int j = 0; j < 10; j++) {
+		// indexTable.setText(i, j, "Peli " + i + j);
+		//
+		// }
+		// }
+		// S RootPanel.get("peliculas").add(indexTable);
+
+		servicio.getPelisMejoresValoradas(new AsyncCallback<Pelicula>() {
+
+			@Override
+			public void onSuccess(Pelicula result) {
+				showPeliculas(result);
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
 
 			}
-		}
 
-		RootPanel.get("peliculas").add(indexTable);
+			private void showPeliculas(Pelicula result) {
+				String output = "<fieldset>";
+
+				if (result != null) {
+					for (Result p : result.getResults())
+						output += "<span>" + p.getTitle() + "</span></br>";
+				} else
+					output += "<span> Hay algún que otro problema, lo resolveremos lo antes posible</span>";
+				output += "</fieldset>";
+
+				HTML pelis = new HTML(output);
+				RootPanel.get("top_valoradas").add(pelis);
+			}
+
+		});
 
 		searchButton.addClickHandler(new ClickHandler() {
 
@@ -61,7 +94,9 @@ public class CineDeBarrio1 implements EntryPoint {
 			public void onClick(ClickEvent event) {
 				etiquetaEstado.setText("Buscando...");
 
+				final String busqueda = searchField.getText();
 				RootPanel.get("form").clear();
+
 			}
 		});
 

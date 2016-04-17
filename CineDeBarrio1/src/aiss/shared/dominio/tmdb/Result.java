@@ -1,278 +1,266 @@
-
 package aiss.shared.dominio.tmdb;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Generated;
 
-@Generated("org.jsonschema2pojo")
-public class Result {
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-    private String posterPath;
-    private Boolean adult;
-    private String overview;
-    private String releaseDate;
-    private List<Integer> genreIds = new ArrayList<Integer>();
-    private Integer id;
-    private String originalTitle;
-    private String originalLanguage;
-    private String title;
-    private String backdropPath;
-    private Double popularity;
-    private Integer voteCount;
-    private Boolean video;
-    private Integer voteAverage;
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Result implements Serializable {
 
-    /**
-     * 
-     * @return
-     *     The posterPath
-     */
-    public String getPosterPath() {
-        return posterPath;
-    }
+	private static final long serialVersionUID = -6096012488295591294L;
+	private String posterPath;
+	private Boolean adult;
+	private String overview;
+	private String releaseDate;
+	private List<Integer> genreIds = new ArrayList<Integer>();
+	private Integer id;
+	private String originalTitle;
+	private String originalLanguage;
+	private String title;
+	private String backdropPath;
+	private Double popularity;
+	private Integer voteCount;
+	private Boolean video;
+	private Integer voteAverage;
 
-    /**
-     * 
-     * @param posterPath
-     *     The poster_path
-     */
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
-    }
+	/**
+	 * 
+	 * @return The posterPath
+	 */
+	public String getPosterPath() {
+		return posterPath;
+	}
 
-    /**
-     * 
-     * @return
-     *     The adult
-     */
-    public Boolean getAdult() {
-        return adult;
-    }
+	/**
+	 * 
+	 * @param posterPath
+	 *            The poster_path
+	 */
+	public void setPosterPath(String posterPath) {
+		this.posterPath = posterPath;
+	}
 
-    /**
-     * 
-     * @param adult
-     *     The adult
-     */
-    public void setAdult(Boolean adult) {
-        this.adult = adult;
-    }
+	/**
+	 * 
+	 * @return The adult
+	 */
+	public Boolean getAdult() {
+		return adult;
+	}
 
-    /**
-     * 
-     * @return
-     *     The overview
-     */
-    public String getOverview() {
-        return overview;
-    }
+	/**
+	 * 
+	 * @param adult
+	 *            The adult
+	 */
+	public void setAdult(Boolean adult) {
+		this.adult = adult;
+	}
 
-    /**
-     * 
-     * @param overview
-     *     The overview
-     */
-    public void setOverview(String overview) {
-        this.overview = overview;
-    }
+	/**
+	 * 
+	 * @return The overview
+	 */
+	public String getOverview() {
+		return overview;
+	}
 
-    /**
-     * 
-     * @return
-     *     The releaseDate
-     */
-    public String getReleaseDate() {
-        return releaseDate;
-    }
+	/**
+	 * 
+	 * @param overview
+	 *            The overview
+	 */
+	public void setOverview(String overview) {
+		this.overview = overview;
+	}
 
-    /**
-     * 
-     * @param releaseDate
-     *     The release_date
-     */
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
-    }
+	/**
+	 * 
+	 * @return The releaseDate
+	 */
+	public String getReleaseDate() {
+		return releaseDate;
+	}
 
-    /**
-     * 
-     * @return
-     *     The genreIds
-     */
-    public List<Integer> getGenreIds() {
-        return genreIds;
-    }
+	/**
+	 * 
+	 * @param releaseDate
+	 *            The release_date
+	 */
+	public void setReleaseDate(String releaseDate) {
+		this.releaseDate = releaseDate;
+	}
 
-    /**
-     * 
-     * @param genreIds
-     *     The genre_ids
-     */
-    public void setGenreIds(List<Integer> genreIds) {
-        this.genreIds = genreIds;
-    }
+	/**
+	 * 
+	 * @return The genreIds
+	 */
+	public List<Integer> getGenreIds() {
+		return genreIds;
+	}
 
-    /**
-     * 
-     * @return
-     *     The id
-     */
-    public Integer getId() {
-        return id;
-    }
+	/**
+	 * 
+	 * @param genreIds
+	 *            The genre_ids
+	 */
+	public void setGenreIds(List<Integer> genreIds) {
+		this.genreIds = genreIds;
+	}
 
-    /**
-     * 
-     * @param id
-     *     The id
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	/**
+	 * 
+	 * @return The id
+	 */
+	public Integer getId() {
+		return id;
+	}
 
-    /**
-     * 
-     * @return
-     *     The originalTitle
-     */
-    public String getOriginalTitle() {
-        return originalTitle;
-    }
+	/**
+	 * 
+	 * @param id
+	 *            The id
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    /**
-     * 
-     * @param originalTitle
-     *     The original_title
-     */
-    public void setOriginalTitle(String originalTitle) {
-        this.originalTitle = originalTitle;
-    }
+	/**
+	 * 
+	 * @return The originalTitle
+	 */
+	public String getOriginalTitle() {
+		return originalTitle;
+	}
 
-    /**
-     * 
-     * @return
-     *     The originalLanguage
-     */
-    public String getOriginalLanguage() {
-        return originalLanguage;
-    }
+	/**
+	 * 
+	 * @param originalTitle
+	 *            The original_title
+	 */
+	public void setOriginalTitle(String originalTitle) {
+		this.originalTitle = originalTitle;
+	}
 
-    /**
-     * 
-     * @param originalLanguage
-     *     The original_language
-     */
-    public void setOriginalLanguage(String originalLanguage) {
-        this.originalLanguage = originalLanguage;
-    }
+	/**
+	 * 
+	 * @return The originalLanguage
+	 */
+	public String getOriginalLanguage() {
+		return originalLanguage;
+	}
 
-    /**
-     * 
-     * @return
-     *     The title
-     */
-    public String getTitle() {
-        return title;
-    }
+	/**
+	 * 
+	 * @param originalLanguage
+	 *            The original_language
+	 */
+	public void setOriginalLanguage(String originalLanguage) {
+		this.originalLanguage = originalLanguage;
+	}
 
-    /**
-     * 
-     * @param title
-     *     The title
-     */
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	/**
+	 * 
+	 * @return The title
+	 */
+	public String getTitle() {
+		return title;
+	}
 
-    /**
-     * 
-     * @return
-     *     The backdropPath
-     */
-    public String getBackdropPath() {
-        return backdropPath;
-    }
+	/**
+	 * 
+	 * @param title
+	 *            The title
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    /**
-     * 
-     * @param backdropPath
-     *     The backdrop_path
-     */
-    public void setBackdropPath(String backdropPath) {
-        this.backdropPath = backdropPath;
-    }
+	/**
+	 * 
+	 * @return The backdropPath
+	 */
+	public String getBackdropPath() {
+		return backdropPath;
+	}
 
-    /**
-     * 
-     * @return
-     *     The popularity
-     */
-    public Double getPopularity() {
-        return popularity;
-    }
+	/**
+	 * 
+	 * @param backdropPath
+	 *            The backdrop_path
+	 */
+	public void setBackdropPath(String backdropPath) {
+		this.backdropPath = backdropPath;
+	}
 
-    /**
-     * 
-     * @param popularity
-     *     The popularity
-     */
-    public void setPopularity(Double popularity) {
-        this.popularity = popularity;
-    }
+	/**
+	 * 
+	 * @return The popularity
+	 */
+	public Double getPopularity() {
+		return popularity;
+	}
 
-    /**
-     * 
-     * @return
-     *     The voteCount
-     */
-    public Integer getVoteCount() {
-        return voteCount;
-    }
+	/**
+	 * 
+	 * @param popularity
+	 *            The popularity
+	 */
+	public void setPopularity(Double popularity) {
+		this.popularity = popularity;
+	}
 
-    /**
-     * 
-     * @param voteCount
-     *     The vote_count
-     */
-    public void setVoteCount(Integer voteCount) {
-        this.voteCount = voteCount;
-    }
+	/**
+	 * 
+	 * @return The voteCount
+	 */
+	public Integer getVoteCount() {
+		return voteCount;
+	}
 
-    /**
-     * 
-     * @return
-     *     The video
-     */
-    public Boolean getVideo() {
-        return video;
-    }
+	/**
+	 * 
+	 * @param voteCount
+	 *            The vote_count
+	 */
+	public void setVoteCount(Integer voteCount) {
+		this.voteCount = voteCount;
+	}
 
-    /**
-     * 
-     * @param video
-     *     The video
-     */
-    public void setVideo(Boolean video) {
-        this.video = video;
-    }
+	/**
+	 * 
+	 * @return The video
+	 */
+	public Boolean getVideo() {
+		return video;
+	}
 
-    /**
-     * 
-     * @return
-     *     The voteAverage
-     */
-    public Integer getVoteAverage() {
-        return voteAverage;
-    }
+	/**
+	 * 
+	 * @param video
+	 *            The video
+	 */
+	public void setVideo(Boolean video) {
+		this.video = video;
+	}
 
-    /**
-     * 
-     * @param voteAverage
-     *     The vote_average
-     */
-    public void setVoteAverage(Integer voteAverage) {
-        this.voteAverage = voteAverage;
-    }
+	/**
+	 * 
+	 * @return The voteAverage
+	 */
+	public Integer getVoteAverage() {
+		return voteAverage;
+	}
+
+	/**
+	 * 
+	 * @param voteAverage
+	 *            The vote_average
+	 */
+	public void setVoteAverage(Integer voteAverage) {
+		this.voteAverage = voteAverage;
+	}
 
 }

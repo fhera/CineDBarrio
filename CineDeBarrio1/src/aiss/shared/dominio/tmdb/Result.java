@@ -24,6 +24,10 @@ public class Result implements Serializable {
 	private Integer voteCount;
 	private Boolean video;
 	private Integer voteAverage;
+	
+	public Result(){
+		
+	}
 
 	/**
 	 * 

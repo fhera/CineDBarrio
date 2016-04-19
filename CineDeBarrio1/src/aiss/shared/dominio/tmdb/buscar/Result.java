@@ -30,6 +30,9 @@ public class Result implements Serializable {
 	private List<String> originCountry = new ArrayList<String>();
 	private String name;
 
+	public Result(){
+		
+	}
 	/**
 	 * 
 	 * @return The adult

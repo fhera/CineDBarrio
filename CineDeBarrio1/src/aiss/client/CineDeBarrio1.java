@@ -123,10 +123,10 @@ public class CineDeBarrio1 implements EntryPoint {
 
 			private void showAlbums(String busqueda, Multimedia result) {
 				String output = "<fieldset>";
-				 output += "<legend>" + busqueda + " albums</legend>";
+				 output += "<legend> Coincidencias con: " + busqueda + " </legend>";
 				 if (result != null) {
 				 for (Result multi : result.getResults()) {
-				 output += "<span>" +multi.getOriginalTitle() + "</span><br/>";
+				 output += "<span>" +multi.getTitle() + "</span><br/>";
 				 }
 				 } else
 				 output = "<span> No results </span>";

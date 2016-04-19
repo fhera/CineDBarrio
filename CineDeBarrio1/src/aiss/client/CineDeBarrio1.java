@@ -1,12 +1,13 @@
 package aiss.client;
 
-import aiss.shared.dominio.tmdb.Pelicula;
-import aiss.shared.dominio.tmdb.Result;
+import aiss.shared.dominio.tmdb.buscar.Multimedia;
+import aiss.shared.dominio.tmdb.buscar.Result;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -42,14 +43,14 @@ public class CineDeBarrio1 implements EntryPoint {
 		searchField.getElement().setAttribute("placeholder", "Buscar aquí...");
 
 		searchButton.getElement().setAttribute("id", "busqueda");
-		searchButton.getElement().setAttribute("class", "boton");
+		etiquetaEstado.getElement().setAttribute("id", "busqueda");
+		// searchButton.getElement().setAttribute("class", "boton");
 
 		// Focus the cursor on the name field when the app loads
 		searchField.setFocus(true);
 		searchField.selectAll();
 
 		RootPanel.get("busqueda").add(searchPanel);
-
 		// // Parte donde se muestra las pelis.
 		// for (int i = 0; i < 10; i++) {
 		// for (int j = 0; j < 10; j++) {
@@ -59,34 +60,36 @@ public class CineDeBarrio1 implements EntryPoint {
 		// }
 		// S RootPanel.get("peliculas").add(indexTable);
 
-		servicio.getPelisMejoresValoradas(new AsyncCallback<Pelicula>() {
+		// servicio.getPelisMejoresValoradas(new AsyncCallback<Pelicula>() {
+		//
+		// @Override
+		// public void onSuccess(Pelicula pelicula) {
+		// showPeliculas(pelicula);
+		// }
+		//
+		// private void showPeliculas(Pelicula pelicula) {
+		// String output = "Hola";
 
-			@Override
-			public void onSuccess(Pelicula result) {
-				showPeliculas(result);
-			}
-
-			@Override
-			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-
-			}
-
-			private void showPeliculas(Pelicula result) {
-				String output = "<fieldset>";
-
-				if (result != null) {
-					for (Result p : result.getResults())
-						output += "<span>" + p.getTitle() + "</span></br>";
-				} else
-					output += "<span> Hay algún que otro problema, lo resolveremos lo antes posible</span>";
-				output += "</fieldset>";
-
-				HTML pelis = new HTML(output);
-				RootPanel.get("top_valoradas").add(pelis);
-			}
-
-		});
+		// if (pelicula != null) {
+		// for (Result p : pelicula.getResults())
+		// output += "<span>" + p.getTitle() + "</span></br>";
+		// } else
+		// output +=
+		// "<span> Hay algún que otro problema, lo resolveremos lo antes posible</span>";
+		// output += "</p>";
+		//
+		// HTML pelis = new HTML(output);
+		// RootPanel.get("top_valoradas").add(pelis);
+		//
+		// }
+		//
+		// @Override
+		// public void onFailure(Throwable caught) {
+		// // TODO Auto-generated method stub
+		//
+		// }
+		//
+		// });
 
 		searchButton.addClickHandler(new ClickHandler() {
 
@@ -95,9 +98,47 @@ public class CineDeBarrio1 implements EntryPoint {
 				etiquetaEstado.setText("Buscando...");
 
 				final String busqueda = searchField.getText();
-				RootPanel.get("form").clear();
+
+				RootPanel.get("top_valoradas").clear();
+				RootPanel.get("peliculas").clear();
+				RootPanel.get("mostrar_busqueda").clear();
+
+				servicio.getBuscarMultimedia(busqueda,
+						new AsyncCallback<Multimedia>() {
+
+							@Override
+							public void onFailure(Throwable caught) {
+								Window.alert("Error en la búsqueda: "
+										+ caught.getMessage());
+							}
+
+							@Override
+							public void onSuccess(Multimedia result) {
+								showAlbums(busqueda, result);
+								searchField.setText("");
+								etiquetaEstado.setText("");
+							}
+						});
+			}
+
+			private void showAlbums(String busqueda, Multimedia result) {
+				String output = "<fieldset>";
+				 output += "<legend>" + busqueda + " albums</legend>";
+				 if (result != null) {
+				 for (Result multi : result.getResults()) {
+				 output += "<span>" +multi.getOriginalTitle() + "</span><br/>";
+				 }
+				 } else
+				 output = "<span> No results </span>";
+				
+				 output += "</fieldset>";
+
+				HTML multimedia = new HTML(output);
+
+				RootPanel.get("mostrar_busqueda").add(multimedia);
 
 			}
+
 		});
 
 	}

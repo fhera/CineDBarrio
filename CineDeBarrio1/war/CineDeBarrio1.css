@@ -4,6 +4,7 @@
 }
 
 h1 {
+	position: fixed;
 	float: left;
 	width: 99.3%;
 	padding: 1px 5px 1px;
@@ -24,17 +25,33 @@ h1 {
 	top: 9px;
 	right: 70px;
 }
-#busqueda .boton{
-	right:0;
+
+#busqueda .gwt-Button {
+	right: 0;
 }
 
-#peliculas{
+#busqueda .gwt-Label {
+	top: 45px;
+	right: 1%;
+}
+
+#top_valoradas {
+	position: absolute;
+	top: 100px;
+}
+
+#mostrar_busqueda {
+	top: 10%;
+	left:1%;
+	position: absolute;
+}
+
+#peliculas {
 	position: fixed;
 	top: 3em;
 }
 
 footer {
-	position: absolute;
 	left: 45%;
 	top: 80%;
 }

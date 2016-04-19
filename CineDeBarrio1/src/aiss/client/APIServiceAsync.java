@@ -9,6 +9,6 @@ public interface APIServiceAsync {
 
 	void getPelisMejoresValoradas(AsyncCallback<Pelicula> callback);
 
-	void getBuscarMultimedia(String busqueda, AsyncCallback<Multimedia> callback);
+	void getBuscarMultimediaTMDB(String busqueda, AsyncCallback<Multimedia> callback);
 
 }

@@ -25,7 +25,7 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 	}
 
 	@Override
-	public Multimedia getBuscarMultimedia(String busqueda) {
+	public Multimedia getBuscarMultimediaTMDB(String busqueda) {
 
 		ClientResource cr = new ClientResource(
 				"http://api.themoviedb.org/3/search/multi?api_key="+ TMDB_API_KEY+ "&query="
@@ -33,5 +33,7 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 		Multimedia multi = cr.get(Multimedia.class);
 		return multi;
 	}
+	
+	
 
 }

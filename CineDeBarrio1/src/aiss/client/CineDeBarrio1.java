@@ -103,7 +103,7 @@ public class CineDeBarrio1 implements EntryPoint {
 				RootPanel.get("peliculas").clear();
 				RootPanel.get("mostrar_busqueda").clear();
 
-				servicio.getBuscarMultimedia(busqueda,
+				servicio.getBuscarMultimediaTMDB(busqueda,
 						new AsyncCallback<Multimedia>() {
 
 							@Override
@@ -123,15 +123,17 @@ public class CineDeBarrio1 implements EntryPoint {
 
 			private void showAlbums(String busqueda, Multimedia result) {
 				String output = "<fieldset>";
-				 output += "<legend> Coincidencias con: " + busqueda + " </legend>";
-				 if (result != null) {
-				 for (Result multi : result.getResults()) {
-				 output += "<span>" +multi.getTitle() + "</span><br/>";
-				 }
-				 } else
-				 output = "<span> No results </span>";
-				
-				 output += "</fieldset>";
+				output += "<legend> Coincidencias con: " + busqueda
+						+ " </legend>";
+				if (result != null) {
+					for (Result multi : result.getResults()) {
+						if (multi.getTitle() != null )
+							output += "<span>" + multi.getId()+ "</span><br/>";
+					}
+				} else
+					output = "<span> No results </span>";
+
+				output += "</fieldset>";
 
 				HTML multimedia = new HTML(output);
 

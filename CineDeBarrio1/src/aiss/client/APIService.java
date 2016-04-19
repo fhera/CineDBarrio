@@ -10,6 +10,6 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface APIService extends RemoteService {
 
 	Pelicula getPelisMejoresValoradas();
-	Multimedia getBuscarMultimedia(String busqueda);
+	Multimedia getBuscarMultimediaTMDB(String busqueda);
 
 }

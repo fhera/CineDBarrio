@@ -127,8 +127,9 @@ public class CineDeBarrio1 implements EntryPoint {
 						+ " </legend>";
 				if (result != null) {
 					for (Result multi : result.getResults()) {
-						if (multi.getTitle() != null )
-							output += "<span>" + multi.getId()+ "</span><br/>";
+						if (multi.getTitle() != null)
+							output += "<span>" + multi.getTitle()
+									+ "</span><br/>";
 					}
 				} else
 					output = "<span> No results </span>";

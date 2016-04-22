@@ -2,6 +2,10 @@
 * {
 	margin: 0px;
 	box-sizing: border-box;
+	
+}
+body{
+	background-color: #d8d8d8;
 }
 
 h1 {
@@ -55,6 +59,7 @@ h1 {
 }
 
 footer {
-	left: 45%;
+	position:fixed;
+	left: 50%;
 	top: 80%;
 }

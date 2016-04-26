@@ -355,5 +355,18 @@ public class Result implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Override
+	public String toString() {
+		return "Result [adult=" + adult + ", backdropPath=" + backdropPath
+				+ ", genreIds=" + genreIds + ", id=" + id
+				+ ", originalLanguage=" + originalLanguage + ", originalTitle="
+				+ originalTitle + ", overview=" + overview + ", releaseDate="
+				+ releaseDate + ", posterPath=" + posterPath + ", popularity="
+				+ popularity + ", title=" + title + ", video=" + video
+				+ ", voteAverage=" + voteAverage + ", voteCount=" + voteCount
+				+ ", mediaType=" + mediaType + ", firstAirDate=" + firstAirDate
+				+ ", originalName=" + originalName + ", originCountry="
+				+ originCountry + ", name=" + name + "]";
+	}
 
 }

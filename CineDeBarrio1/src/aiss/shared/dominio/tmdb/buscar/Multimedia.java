@@ -6,86 +6,93 @@ import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown=true)
-public class Multimedia implements Serializable{
-
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Multimedia implements Serializable {
 
 	private static final long serialVersionUID = -6909757148383273349L;
 	private Integer page;
-    private List<Result> results = new ArrayList<Result>();
-    private Integer totalPages;
-    private Integer totalResults;
+	private List<Result> results = new ArrayList<Result>();
 
-    /**
-     * 
-     * @return
-     *     The page
-     */
-    public Integer getPage() {
-        return page;
-    }
+	private Integer totalPages;
+	private Integer totalResults;
 
-    /**
-     * 
-     * @param page
-     *     The page
-     */
-    public void setPage(Integer page) {
-        this.page = page;
-    }
+	public Multimedia() {
 
-    /**
-     * 
-     * @return
-     *     The results
-     */
-    public List<Result> getResults() {
-        return results;
-    }
+	}
 
-    /**
-     * 
-     * @param results
-     *     The results
-     */
-    public void setResults(List<Result> results) {
-        this.results = results;
-    }
+	/**
+	 * 
+	 * @return The page
+	 */
+	public Integer getPage() {
+		return page;
+	}
 
-    /**
-     * 
-     * @return
-     *     The totalPages
-     */
-    public Integer getTotalPages() {
-        return totalPages;
-    }
+	/**
+	 * 
+	 * @param page
+	 *            The page
+	 */
+	public void setPage(Integer page) {
+		this.page = page;
+	}
 
-    /**
-     * 
-     * @param totalPages
-     *     The total_pages
-     */
-    public void setTotalPages(Integer totalPages) {
-        this.totalPages = totalPages;
-    }
+	/**
+	 * 
+	 * @return The results
+	 */
+	public List<Result> getResults() {
+		return results;
+	}
 
-    /**
-     * 
-     * @return
-     *     The totalResults
-     */
-    public Integer getTotalResults() {
-        return totalResults;
-    }
+	/**
+	 * 
+	 * @param results
+	 *            The results
+	 */
+	public void setResults(List<Result> results) {
+		this.results = results;
+	}
 
-    /**
-     * 
-     * @param totalResults
-     *     The total_results
-     */
-    public void setTotalResults(Integer totalResults) {
-        this.totalResults = totalResults;
-    }
+	/**
+	 * 
+	 * @return The totalPages
+	 */
+	public Integer getTotalPages() {
+		return totalPages;
+	}
+
+	/**
+	 * 
+	 * @param totalPages
+	 *            The total_pages
+	 */
+	public void setTotalPages(Integer totalPages) {
+		this.totalPages = totalPages;
+	}
+
+	/**
+	 * 
+	 * @return The totalResults
+	 */
+	public Integer getTotalResults() {
+		return totalResults;
+	}
+
+	/**
+	 * 
+	 * @param totalResults
+	 *            The total_results
+	 */
+	public void setTotalResults(Integer totalResults) {
+		this.totalResults = totalResults;
+	}
+
+	@Override
+	public String toString() {
+		return "Multimedia [page=" + page + ", results=" + results
+				+ ", totalPages=" + totalPages + ", totalResults="
+				+ totalResults + "]";
+	}
 
 }

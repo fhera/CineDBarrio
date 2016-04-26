@@ -17,6 +17,9 @@ public class Pelicula implements Serializable {
 	private Integer totalResults;
 	private Integer totalPages;
 
+	public Pelicula() {
+	}
+
 	/**
 	 * 
 	 * @return The page

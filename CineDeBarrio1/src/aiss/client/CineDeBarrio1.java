@@ -9,6 +9,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
@@ -27,8 +28,6 @@ public class CineDeBarrio1 implements EntryPoint {
 	// En indexTable vamos a añadir el cuerpo del HTML, tales como estrenos,
 	// peliculas y series.
 
-	private FlexTable indexTable = new FlexTable();
-
 	private final APIServiceAsync servicio = GWT.create(APIService.class);
 
 	public void onModuleLoad() {
@@ -39,16 +38,10 @@ public class CineDeBarrio1 implements EntryPoint {
 
 		searchField.getElement().setAttribute("type", "text");
 		searchField.getElement().setAttribute("id", "busqueda");
-		searchField.getElement().setAttribute("class", "caja");
 		searchField.getElement().setAttribute("placeholder", "Buscar aquí...");
 
 		searchButton.getElement().setAttribute("id", "busqueda");
 		etiquetaEstado.getElement().setAttribute("id", "busqueda");
-		// searchButton.getElement().setAttribute("class", "boton");
-
-		// Focus the cursor on the name field when the app loads
-		searchField.setFocus(true);
-		searchField.selectAll();
 
 		RootPanel.get("busqueda").add(searchPanel);
 		// // Parte donde se muestra las pelis.
@@ -114,31 +107,84 @@ public class CineDeBarrio1 implements EntryPoint {
 
 							@Override
 							public void onSuccess(Multimedia result) {
-								showAlbums(busqueda, result);
+								showMultimedia(busqueda, result);
 								searchField.setText("");
 								etiquetaEstado.setText("");
 							}
 						});
 			}
 
-			private void showAlbums(String busqueda, Multimedia result) {
-				String output = "<fieldset>";
-				output += "<legend> Coincidencias con: " + busqueda
-						+ " </legend>";
+			private void showMultimedia(String busqueda, Multimedia result) {
+				final FlexTable indexTable = new FlexTable();
+				Anchor a = new Anchor();
+				// String res = "Multimedia toString: ";
+				// res += "<br>" + result.toString();
+
 				if (result != null) {
-					for (Result multi : result.getResults()) {
-						if (multi.getTitle() != null)
-							output += "<span>" + multi.getTitle()
-									+ "</span><br/>";
+					for (final Result multi : result.getResults()) {
+
+						if (multi.getTitle() != null) {
+
+							int index = result.getResults().indexOf(multi) + 1;
+
+							a.setHTML(multi.getTitle());
+							indexTable.setText(0, 0, "Búsqueda: " + busqueda);
+							indexTable.setText(0, 1, "Sinopsis");
+
+							indexTable.setHTML(index, 0,
+									"<img src='http://image.tmdb.org/t/p/w500'"
+											+ multi.getPoster_path()+">");
+							indexTable.setHTML(index, 1, a.getHTML());
+							indexTable.setHTML(index, 2, multi.getOverview());
+
+							// a.addClickHandler(new ClickHandler() {
+							//
+							// @Override
+							// public void onClick(ClickEvent event) {
+							// // TODO Auto-generated method stub
+							// RootPanel.get("top_valoradas").clear();
+							// RootPanel.get("peliculas").clear();
+							// RootPanel.get("mostrar_busqueda").clear();
+							//
+							// servicio.getPelicula(multi.getId(),
+							// new AsyncCallback<Result>() {
+							//
+							// @Override
+							// public void onFailure(
+							// Throwable caught) {
+							//
+							// }
+							//
+							// @Override
+							// public void onSuccess(
+							// Result result) {
+							// String output = "<fieldset>";
+							// if (result != null) {
+							// output += "<span>"
+							// + result.getTitle()
+							// + "</span>";
+							// }
+							// output += "</fieldset>";
+							//
+							// HTML multimedia = new HTML(
+							// output);
+							//
+							// RootPanel.get(
+							// "mostrar_busqueda")
+							// .add(multimedia);
+							//
+							// }
+							// });
+							//
+							// }
+							// });
+
+						}
 					}
 				} else
-					output = "<span> No results </span>";
+					indexTable.setHTML(0, 0, "Sin resultados.");
 
-				output += "</fieldset>";
-
-				HTML multimedia = new HTML(output);
-
-				RootPanel.get("mostrar_busqueda").add(multimedia);
+				RootPanel.get("mostrar_busqueda").add(indexTable);
 
 			}
 

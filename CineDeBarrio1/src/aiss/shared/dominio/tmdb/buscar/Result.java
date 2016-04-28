@@ -11,28 +11,29 @@ public class Result implements Serializable {
 
 	private static final long serialVersionUID = -8590903442118182450L;
 	private Boolean adult;
-	private String backdropPath;
-	private List<Integer> genreIds = new ArrayList<Integer>();
+	private String backdrop_path;
+	private List<Integer> genre_ids = new ArrayList<Integer>();
 	private Integer id;
-	private String originalLanguage;
-	private String originalTitle;
+	private String original_language;
+	private String original_title;
 	private String overview;
-	private String releaseDate;
-	private String posterPath;
+	private String release_date;
+	private String poster_path;
 	private Double popularity;
 	private String title;
 	private Boolean video;
-	private Double voteAverage;
-	private Integer voteCount;
-	private String mediaType;
-	private String firstAirDate;
-	private String originalName;
-	private List<String> originCountry = new ArrayList<String>();
+	private Double vote_average;
+	private Integer vote_count;
+	private String media_type;
+	private String first_air_date;
+	private String original_name;
+	private List<String> origin_country = new ArrayList<String>();
 	private String name;
 
-	public Result(){
-		
+	public Result() {
+
 	}
+
 	/**
 	 * 
 	 * @return The adult
@@ -54,8 +55,8 @@ public class Result implements Serializable {
 	 * 
 	 * @return The backdropPath
 	 */
-	public String getBackdropPath() {
-		return backdropPath;
+	public String getBackdrop_path() {
+		return backdrop_path;
 	}
 
 	/**
@@ -63,16 +64,16 @@ public class Result implements Serializable {
 	 * @param backdropPath
 	 *            The backdrop_path
 	 */
-	public void setBackdropPath(String backdropPath) {
-		this.backdropPath = backdropPath;
+	public void setBackdrop_path(String backdropPath) {
+		this.backdrop_path = backdropPath;
 	}
 
 	/**
 	 * 
 	 * @return The genreIds
 	 */
-	public List<Integer> getGenreIds() {
-		return genreIds;
+	public List<Integer> getGenre_ids() {
+		return genre_ids;
 	}
 
 	/**
@@ -80,8 +81,8 @@ public class Result implements Serializable {
 	 * @param genreIds
 	 *            The genre_ids
 	 */
-	public void setGenreIds(List<Integer> genreIds) {
-		this.genreIds = genreIds;
+	public void setGenre_ids(List<Integer> genreIds) {
+		this.genre_ids = genreIds;
 	}
 
 	/**
@@ -105,8 +106,8 @@ public class Result implements Serializable {
 	 * 
 	 * @return The originalLanguage
 	 */
-	public String getOriginalLanguage() {
-		return originalLanguage;
+	public String getOriginal_language() {
+		return original_language;
 	}
 
 	/**
@@ -114,16 +115,16 @@ public class Result implements Serializable {
 	 * @param originalLanguage
 	 *            The original_language
 	 */
-	public void setOriginalLanguage(String originalLanguage) {
-		this.originalLanguage = originalLanguage;
+	public void setOriginal_language(String originalLanguage) {
+		this.original_language = originalLanguage;
 	}
 
 	/**
 	 * 
 	 * @return The originalTitle
 	 */
-	public String getOriginalTitle() {
-		return originalTitle;
+	public String getOriginal_title() {
+		return original_title;
 	}
 
 	/**
@@ -131,8 +132,8 @@ public class Result implements Serializable {
 	 * @param originalTitle
 	 *            The original_title
 	 */
-	public void setOriginalTitle(String originalTitle) {
-		this.originalTitle = originalTitle;
+	public void setOriginal_title(String originalTitle) {
+		this.original_title = originalTitle;
 	}
 
 	/**
@@ -156,8 +157,8 @@ public class Result implements Serializable {
 	 * 
 	 * @return The releaseDate
 	 */
-	public String getReleaseDate() {
-		return releaseDate;
+	public String getRelease_date() {
+		return release_date;
 	}
 
 	/**
@@ -165,16 +166,16 @@ public class Result implements Serializable {
 	 * @param releaseDate
 	 *            The release_date
 	 */
-	public void setReleaseDate(String releaseDate) {
-		this.releaseDate = releaseDate;
+	public void setRelease_date(String releaseDate) {
+		this.release_date = releaseDate;
 	}
 
 	/**
 	 * 
 	 * @return The posterPath
 	 */
-	public String getPosterPath() {
-		return posterPath;
+	public String getPoster_path() {
+		return poster_path;
 	}
 
 	/**
@@ -182,8 +183,8 @@ public class Result implements Serializable {
 	 * @param posterPath
 	 *            The poster_path
 	 */
-	public void setPosterPath(String posterPath) {
-		this.posterPath = posterPath;
+	public void setPoster_path(String posterPath) {
+		this.poster_path = posterPath;
 	}
 
 	/**
@@ -241,8 +242,8 @@ public class Result implements Serializable {
 	 * 
 	 * @return The voteAverage
 	 */
-	public Double getVoteAverage() {
-		return voteAverage;
+	public Double getVote_average() {
+		return vote_average;
 	}
 
 	/**
@@ -250,16 +251,16 @@ public class Result implements Serializable {
 	 * @param voteAverage
 	 *            The vote_average
 	 */
-	public void setVoteAverage(Double voteAverage) {
-		this.voteAverage = voteAverage;
+	public void setVote_average(Double voteAverage) {
+		this.vote_average = voteAverage;
 	}
 
 	/**
 	 * 
 	 * @return The voteCount
 	 */
-	public Integer getVoteCount() {
-		return voteCount;
+	public Integer getVote_count() {
+		return vote_count;
 	}
 
 	/**
@@ -267,16 +268,16 @@ public class Result implements Serializable {
 	 * @param voteCount
 	 *            The vote_count
 	 */
-	public void setVoteCount(Integer voteCount) {
-		this.voteCount = voteCount;
+	public void setVote_count(Integer voteCount) {
+		this.vote_count = voteCount;
 	}
 
 	/**
 	 * 
 	 * @return The mediaType
 	 */
-	public String getMediaType() {
-		return mediaType;
+	public String getMedia_type() {
+		return media_type;
 	}
 
 	/**
@@ -284,16 +285,16 @@ public class Result implements Serializable {
 	 * @param mediaType
 	 *            The media_type
 	 */
-	public void setMediaType(String mediaType) {
-		this.mediaType = mediaType;
+	public void setMedia_type(String mediaType) {
+		this.media_type = mediaType;
 	}
 
 	/**
 	 * 
 	 * @return The firstAirDate
 	 */
-	public String getFirstAirDate() {
-		return firstAirDate;
+	public String getFirst_air_date() {
+		return first_air_date;
 	}
 
 	/**
@@ -301,16 +302,16 @@ public class Result implements Serializable {
 	 * @param firstAirDate
 	 *            The first_air_date
 	 */
-	public void setFirstAirDate(String firstAirDate) {
-		this.firstAirDate = firstAirDate;
+	public void setFirst_air_date(String firstAirDate) {
+		this.first_air_date = firstAirDate;
 	}
 
 	/**
 	 * 
 	 * @return The originalName
 	 */
-	public String getOriginalName() {
-		return originalName;
+	public String getOriginal_name() {
+		return original_name;
 	}
 
 	/**
@@ -318,16 +319,16 @@ public class Result implements Serializable {
 	 * @param originalName
 	 *            The original_name
 	 */
-	public void setOriginalName(String originalName) {
-		this.originalName = originalName;
+	public void setOriginal_name(String originalName) {
+		this.original_name = originalName;
 	}
 
 	/**
 	 * 
 	 * @return The originCountry
 	 */
-	public List<String> getOriginCountry() {
-		return originCountry;
+	public List<String> getOrigin_country() {
+		return origin_country;
 	}
 
 	/**
@@ -335,8 +336,8 @@ public class Result implements Serializable {
 	 * @param originCountry
 	 *            The origin_country
 	 */
-	public void setOriginCountry(List<String> originCountry) {
-		this.originCountry = originCountry;
+	public void setOrigin_country(List<String> originCountry) {
+		this.origin_country = originCountry;
 	}
 
 	/**
@@ -354,6 +355,21 @@ public class Result implements Serializable {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Result [adult=" + adult + ", backdropPath=" + backdrop_path
+				+ ", genreIds=" + genre_ids + ", id=" + id
+				+ ", originalLanguage=" + original_language
+				+ ", originalTitle=" + original_title + ", overview="
+				+ overview + ", releaseDate=" + release_date + ", posterPath="
+				+ poster_path + ", popularity=" + popularity + ", title="
+				+ title + ", video=" + video + ", voteAverage=" + vote_average
+				+ ", voteCount=" + vote_count + ", mediaType=" + media_type
+				+ ", firstAirDate=" + first_air_date + ", originalName="
+				+ original_name + ", originCountry=" + origin_country
+				+ ", name=" + name + "]";
 	}
 
 }

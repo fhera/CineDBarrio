@@ -124,58 +124,60 @@ public class CineDeBarrio1 implements EntryPoint {
 					for (final Result multi : result.getResults()) {
 
 						if (multi.getTitle() != null) {
+
+							int index = result.getResults().indexOf(multi) + 1;
+
 							a.setHTML(multi.getTitle());
 							indexTable.setText(0, 0, "Búsqueda: " + busqueda);
 							indexTable.setText(0, 1, "Sinopsis");
 
-							indexTable.setHTML(
-									result.getResults().indexOf(multi) + 1, 0,
-									a.getHTML());
-							indexTable.setHTML(
-									result.getResults().indexOf(multi) + 1, 1,
-									multi.getOverview());
+							indexTable.setHTML(index, 0,
+									"<img src='http://image.tmdb.org/t/p/w500'"
+											+ multi.getPoster_path()+">");
+							indexTable.setHTML(index, 1, a.getHTML());
+							indexTable.setHTML(index, 2, multi.getOverview());
 
-//							a.addClickHandler(new ClickHandler() {
-//
-//								@Override
-//								public void onClick(ClickEvent event) {
-//									// TODO Auto-generated method stub
-//									RootPanel.get("top_valoradas").clear();
-//									RootPanel.get("peliculas").clear();
-//									RootPanel.get("mostrar_busqueda").clear();
-//
-//									servicio.getPelicula(multi.getId(),
-//											new AsyncCallback<Result>() {
-//
-//												@Override
-//												public void onFailure(
-//														Throwable caught) {
-//
-//												}
-//
-//												@Override
-//												public void onSuccess(
-//														Result result) {
-//													String output = "<fieldset>";
-//													if (result != null) {
-//														output += "<span>"
-//																+ result.getTitle()
-//																+ "</span>";
-//													}
-//													output += "</fieldset>";
-//
-//													HTML multimedia = new HTML(
-//															output);
-//
-//													RootPanel.get(
-//															"mostrar_busqueda")
-//															.add(multimedia);
-//
-//												}
-//											});
-//
-//								}
-//							});
+							// a.addClickHandler(new ClickHandler() {
+							//
+							// @Override
+							// public void onClick(ClickEvent event) {
+							// // TODO Auto-generated method stub
+							// RootPanel.get("top_valoradas").clear();
+							// RootPanel.get("peliculas").clear();
+							// RootPanel.get("mostrar_busqueda").clear();
+							//
+							// servicio.getPelicula(multi.getId(),
+							// new AsyncCallback<Result>() {
+							//
+							// @Override
+							// public void onFailure(
+							// Throwable caught) {
+							//
+							// }
+							//
+							// @Override
+							// public void onSuccess(
+							// Result result) {
+							// String output = "<fieldset>";
+							// if (result != null) {
+							// output += "<span>"
+							// + result.getTitle()
+							// + "</span>";
+							// }
+							// output += "</fieldset>";
+							//
+							// HTML multimedia = new HTML(
+							// output);
+							//
+							// RootPanel.get(
+							// "mostrar_busqueda")
+							// .add(multimedia);
+							//
+							// }
+							// });
+							//
+							// }
+							// });
 
 						}
 					}

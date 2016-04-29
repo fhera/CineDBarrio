@@ -1,7 +1,11 @@
 package aiss.client;
 
+import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
-import aiss.shared.dominio.tmdb.buscar.Result;
+import aiss.shared.dominio.tviso.AuthToken;
+import aiss.shared.dominio.tviso.BusquedaTviso;
+import aiss.shared.dominio.tviso.Media;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -11,6 +15,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -36,7 +41,7 @@ public class CineDeBarrio1 implements EntryPoint {
 
 		searchField.getElement().setAttribute("type", "text");
 		searchField.getElement().setAttribute("id", "busqueda");
-		searchField.getElement().setAttribute("placeholder", "Buscar aquí...");
+		searchField.getElement().setAttribute("placeholder", "Buscar aqui...");
 
 		searchButton.getElement().setAttribute("id", "busqueda");
 		etiquetaEstado.getElement().setAttribute("id", "busqueda");
@@ -83,7 +88,7 @@ public class CineDeBarrio1 implements EntryPoint {
 		// });
 
 		searchButton.addClickHandler(new ClickHandler() {
-			
+
 			public void onClick(ClickEvent event) {
 				etiquetaEstado.setText("Buscando...");
 
@@ -94,32 +99,52 @@ public class CineDeBarrio1 implements EntryPoint {
 				RootPanel.get("mostrar_busqueda").clear();
 
 				servicio.getBuscarMultimediaTMDB(busqueda,
-						new AsyncCallback<Multimedia>() {
+						new AsyncCallback<Busqueda>() {
 
 							@Override
 							public void onFailure(Throwable caught) {
-								Window.alert("Error en la búsqueda: "
+								Window.alert("Error en la busqueda: "
 										+ caught.getMessage());
 							}
 
 							@Override
-							public void onSuccess(Multimedia result) {
-								showMultimedia(busqueda, result);
+							public void onSuccess(Busqueda result) {
+								 showMultimediaTMDB(busqueda, result);
+								// searchField.setText("");
+								// etiquetaEstado.setText("");
+							}
+						});
+				servicio.getMediaPorTitulo(busqueda,
+						new AsyncCallback<BusquedaTviso>() {
+
+							@Override
+							public void onFailure(Throwable caught) {
+								// TODO Auto-generated method stub
+								Window.alert("Error en la busqueda: "
+										+ caught.getMessage());
+
+							}
+
+							@Override
+							public void onSuccess(BusquedaTviso result) {
+								// TODO Auto-generated method stub
+								showMediaTViso(busqueda, result);
 								searchField.setText("");
 								etiquetaEstado.setText("");
 							}
 						});
+				
 			}
 
-			private void showMultimedia(String busqueda, Multimedia result) {
+			private void showMultimediaTMDB(String busqueda, Busqueda result) {
 				final FlexTable indexTable = new FlexTable();
 				Anchor a = new Anchor();
 				// String res = "Multimedia toString: ";
 				// res += "<br>" + result.toString();
 
 				if (result != null) {
-					for (final Result multi : result.getResults()) {
-
+					for (final Multimedia multi : result.getResults()) {
+						// Media_type: tv, movie
 						if (multi.getTitle() != null) {
 
 							int index = result.getResults().indexOf(multi) + 1;
@@ -130,9 +155,10 @@ public class CineDeBarrio1 implements EntryPoint {
 
 							indexTable.setHTML(index, 0,
 									"<img src='http://image.tmdb.org/t/p/w500'"
-											+ multi.getPoster_path()+">");
+											+ multi.getPoster_path() + ">");
 							indexTable.setHTML(index, 1, a.getHTML());
 							indexTable.setHTML(index, 2, multi.getOverview());
+							indexTable.setHTML(index, 3, multi.getMedia_type());
 
 							// a.addClickHandler(new ClickHandler() {
 							//
@@ -181,6 +207,21 @@ public class CineDeBarrio1 implements EntryPoint {
 				} else
 					indexTable.setHTML(0, 0, "Sin resultados.");
 				RootPanel.get("mostrar_busqueda").add(indexTable);
+
+			}
+
+			private void showMediaTViso(String busqueda, BusquedaTviso result) {
+				Media media = result.get0();
+
+				String output = "<fieldset>";
+				if (result != null) {
+					output += "<span>" + media.getName() + "</span>";
+				}
+				output += "</fieldset>";
+
+				HTML multimedia = new HTML(output);
+
+				RootPanel.get("mostrar_busqueda").add(multimedia);
 
 			}
 

@@ -1,9 +1,10 @@
 package aiss.client;
 
-import aiss.shared.dominio.tmdb.Pelicula;
+import aiss.shared.dominio.tmdb.Peliculas;
+import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
-import aiss.shared.dominio.tmdb.buscar.Result;
-import aiss.shared.dominio.tviso.Media;
+import aiss.shared.dominio.tviso.AuthToken;
+import aiss.shared.dominio.tviso.BusquedaTviso;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
@@ -11,11 +12,13 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("servicio")
 public interface APIService extends RemoteService {
 
-	Pelicula getPelisMejoresValoradas();
+	Peliculas getPelisMejoresValoradas();
 
-	Multimedia getBuscarMultimediaTMDB(String busqueda);
+	Busqueda getBuscarMultimediaTMDB(String busqueda);
 
-	Result getPelicula(Integer id);
+	Multimedia getPelicula(Integer id);
 
-	Media getMediaPorTitulo(String titulo);
+	BusquedaTviso getMediaPorTitulo(String titulo);
+	
+	AuthToken getAuthTokenTviso();
 }

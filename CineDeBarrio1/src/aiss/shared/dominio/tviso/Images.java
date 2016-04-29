@@ -24,18 +24,6 @@ public class Images implements Serializable {
 
 	/**
 	 * 
-	 * @param poster
-	 * @param country
-	 * @param backdrop
-	 */
-	public Images(String backdrop, String poster, String country) {
-		this.backdrop = backdrop;
-		this.poster = poster;
-		this.country = country;
-	}
-
-	/**
-	 * 
 	 * @return The backdrop
 	 */
 	public String getBackdrop() {

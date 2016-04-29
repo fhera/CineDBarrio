@@ -2,7 +2,6 @@ package aiss.client;
 
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
 import aiss.shared.dominio.tmdb.buscar.Result;
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -12,7 +11,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -38,7 +36,7 @@ public class CineDeBarrio1 implements EntryPoint {
 
 		searchField.getElement().setAttribute("type", "text");
 		searchField.getElement().setAttribute("id", "busqueda");
-		searchField.getElement().setAttribute("placeholder", "Buscar aquÃ­...");
+		searchField.getElement().setAttribute("placeholder", "Buscar aquí...");
 
 		searchButton.getElement().setAttribute("id", "busqueda");
 		etiquetaEstado.getElement().setAttribute("id", "busqueda");
@@ -85,8 +83,7 @@ public class CineDeBarrio1 implements EntryPoint {
 		// });
 
 		searchButton.addClickHandler(new ClickHandler() {
-
-			@Override
+			
 			public void onClick(ClickEvent event) {
 				etiquetaEstado.setText("Buscando...");
 
@@ -101,7 +98,7 @@ public class CineDeBarrio1 implements EntryPoint {
 
 							@Override
 							public void onFailure(Throwable caught) {
-								Window.alert("Error en la bÃºsqueda: "
+								Window.alert("Error en la búsqueda: "
 										+ caught.getMessage());
 							}
 
@@ -181,7 +178,6 @@ public class CineDeBarrio1 implements EntryPoint {
 					}
 				} else
 					indexTable.setHTML(0, 0, "Sin resultados.");
-
 				RootPanel.get("mostrar_busqueda").add(indexTable);
 
 			}

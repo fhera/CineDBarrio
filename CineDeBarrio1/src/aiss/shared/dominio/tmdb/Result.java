@@ -30,7 +30,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return The posterPath
 	 */
 	public String getPosterPath() {
@@ -38,7 +37,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @param posterPath
 	 *            The poster_path
 	 */
@@ -47,7 +45,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return The adult
 	 */
 	public Boolean getAdult() {
@@ -55,7 +52,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @param adult
 	 *            The adult
 	 */
@@ -64,7 +60,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return The overview
 	 */
 	public String getOverview() {
@@ -72,7 +67,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @param overview
 	 *            The overview
 	 */
@@ -81,7 +75,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return The releaseDate
 	 */
 	public String getReleaseDate() {
@@ -89,7 +82,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @param releaseDate
 	 *            The release_date
 	 */
@@ -98,7 +90,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return The genreIds
 	 */
 	public List<Integer> getGenreIds() {
@@ -106,7 +97,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @param genreIds
 	 *            The genre_ids
 	 */
@@ -115,7 +105,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return The id
 	 */
 	public Integer getId() {
@@ -123,7 +112,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @param id
 	 *            The id
 	 */
@@ -132,7 +120,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return The originalTitle
 	 */
 	public String getOriginalTitle() {
@@ -140,7 +127,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @param originalTitle
 	 *            The original_title
 	 */
@@ -149,7 +135,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return The originalLanguage
 	 */
 	public String getOriginalLanguage() {
@@ -157,7 +142,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @param originalLanguage
 	 *            The original_language
 	 */
@@ -166,7 +150,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return The title
 	 */
 	public String getTitle() {
@@ -174,7 +157,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @param title
 	 *            The title
 	 */
@@ -183,7 +165,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return The backdropPath
 	 */
 	public String getBackdropPath() {
@@ -191,7 +172,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @param backdropPath
 	 *            The backdrop_path
 	 */
@@ -200,7 +180,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return The popularity
 	 */
 	public Double getPopularity() {
@@ -208,7 +187,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @param popularity
 	 *            The popularity
 	 */
@@ -217,7 +195,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return The voteCount
 	 */
 	public Integer getVoteCount() {
@@ -225,7 +202,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @param voteCount
 	 *            The vote_count
 	 */
@@ -234,7 +210,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return The video
 	 */
 	public Boolean getVideo() {
@@ -242,7 +217,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @param video
 	 *            The video
 	 */
@@ -251,7 +225,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return The voteAverage
 	 */
 	public Integer getVoteAverage() {
@@ -259,7 +232,6 @@ public class Result implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @param voteAverage
 	 *            The vote_average
 	 */

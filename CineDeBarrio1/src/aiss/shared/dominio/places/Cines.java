@@ -11,7 +11,6 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Generated("org.jsonschema2pojo")
 public class Cines implements Serializable {
-public class Cines implements Serializable{
 
 	/**
 	 * 
@@ -80,14 +79,6 @@ public class Cines implements Serializable{
 	public String getStatus() {
 		return status;
 	}
-    /**
-     * 
-     * @return
-     *     The status
-     */
-    public String getStatus() {
-        return status;
-    }
 
 	/**
 	 * 

@@ -6,7 +6,7 @@ import java.util.List;
 import javax.annotation.Generated;
 
 @Generated("org.jsonschema2pojo")
-public class Result {
+public class Cine {
 
     private Geometry geometry;
     private String icon;

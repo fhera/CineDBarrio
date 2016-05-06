@@ -1,16 +1,25 @@
 
 package aiss.shared.dominio.places;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.Generated;
 
-@Generated("org.jsonschema2pojo")
-public class Cines {
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-    private List<Object> htmlAttributions = new ArrayList<Object>();
+@Generated("org.jsonschema2pojo")
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Cines implements Serializable{
+
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8558160427888106868L;
+	private List<Object> htmlAttributions = new ArrayList<Object>();
     private String nextPageToken;
-    private List<Result> results = new ArrayList<Result>();
+    private List<Cine> results = new ArrayList<Cine>();
     private String status;
 
     /**
@@ -54,7 +63,7 @@ public class Cines {
      * @return
      *     The results
      */
-    public List<Result> getResults() {
+    public List<Cine> getResults() {
         return results;
     }
 
@@ -63,7 +72,7 @@ public class Cines {
      * @param results
      *     The results
      */
-    public void setResults(List<Result> results) {
+    public void setResults(List<Cine> results) {
         this.results = results;
     }
 

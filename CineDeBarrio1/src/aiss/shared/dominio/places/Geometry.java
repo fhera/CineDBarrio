@@ -1,12 +1,21 @@
 
 package aiss.shared.dominio.places;
 
+import java.io.Serializable;
+
 import javax.annotation.Generated;
 
-@Generated("org.jsonschema2pojo")
-public class Geometry {
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-    private Location location;
+@JsonIgnoreProperties(ignoreUnknown = true)
+@Generated("org.jsonschema2pojo")
+public class Geometry implements Serializable {
+
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1222323176366251531L;
+	private Location location;
 
     /**
      * 

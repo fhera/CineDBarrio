@@ -2,9 +2,9 @@ package aiss.client;
 
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
-import aiss.shared.dominio.tviso.AuthToken;
 import aiss.shared.dominio.tviso.BusquedaTviso;
 import aiss.shared.dominio.tviso.Media;
+import aiss.shared.dominio.tviso.Media1;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.shared.GWT;
@@ -150,8 +150,8 @@ public class CineDeBarrio1 implements EntryPoint {
 							int index = result.getResults().indexOf(multi) + 1;
 
 							a.setHTML(multi.getTitle());
-							indexTable.setText(0, 0, "Búsqueda: " + busqueda);
-							indexTable.setText(0, 1, "Sinopsis");
+							indexTable.setText(0, 0, "Búsqueda en TMBD: " + busqueda);
+							indexTable.setText(0, 2, "Sinopsis");
 
 							indexTable.setHTML(index, 0,
 									"<img src='http://image.tmdb.org/t/p/w500'"
@@ -212,10 +212,13 @@ public class CineDeBarrio1 implements EntryPoint {
 
 			private void showMediaTViso(String busqueda, BusquedaTviso result) {
 				Media media = result.get0();
+				Media1 media1 = result.get1();
 
 				String output = "<fieldset>";
+				output +="<legend> Búsqueda en Tviso </legend>";
 				if (result != null) {
 					output += "<span>" + media.getName() + "</span>";
+					output+= "<span>" + media1.getName() + "</span>";
 				}
 				output += "</fieldset>";
 

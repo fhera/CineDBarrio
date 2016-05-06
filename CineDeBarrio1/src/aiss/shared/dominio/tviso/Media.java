@@ -25,7 +25,7 @@ public class Media implements Serializable {
 	private Integer year;
 	private String plot;	
 	private String idMedia;
-	private List<Object> vodBestOffer = new ArrayList<Object>();
+	private vod_best_offer vod_best_offer;
 
 	/**
 	 * No args constructor for use in serialization
@@ -217,15 +217,15 @@ public class Media implements Serializable {
 	/**
 	 * @return The vodBestOffer
 	 */
-	public List<Object> getVodBestOffer() {
-		return vodBestOffer;
+	public vod_best_offer getVodBestOffer() {
+		return vod_best_offer;
 	}
 
 	/**
 	 * @param vodBestOffer
 	 *            The vod_best_offer
 	 */
-	public void setVodBestOffer(List<Object> vodBestOffer) {
-		this.vodBestOffer = vodBestOffer;
+	public void setVodBestOffer(vod_best_offer vodBestOffer) {
+		this.vod_best_offer = vodBestOffer;
 	}
 }

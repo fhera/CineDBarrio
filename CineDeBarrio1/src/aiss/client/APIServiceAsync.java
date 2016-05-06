@@ -1,5 +1,6 @@
 package aiss.client;
 
+import aiss.shared.dominio.places.Cines;
 import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
@@ -19,7 +20,8 @@ public interface APIServiceAsync {
 
 	void getMediaPorTitulo(String titulo,
 			AsyncCallback<BusquedaTviso> callback);
-
 	void getAuthTokenTviso(AsyncCallback<AuthToken> callback);
+
+	void getCinesCercanos(AsyncCallback<Cines> callback);
 
 }

@@ -1,12 +1,15 @@
 package aiss.server;
 
 import org.restlet.resource.ClientResource;
+
 import aiss.client.APIService;
+import aiss.shared.dominio.places.Cines;
 import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
 import aiss.shared.dominio.tviso.AuthToken;
 import aiss.shared.dominio.tviso.BusquedaTviso;
+
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 @SuppressWarnings("serial")
@@ -15,7 +18,7 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 	private static final String TMDB_API_KEY = "08f0211eeab73ad077f12a6a627118f8";
 	private static final String TVISO_API_ID = "3486";
 	private static final String TVISO_SECRET = "sFpnqqvtASHvWPKFANZn";
-	private static final String PLACE_API_KEY= "AIzaSyBNlZU09q-jlc79TF43mGFTEqfM8n94USk";
+	private static final String PLACE_API_KEY = "AIzaSyBNlZU09q-jlc79TF43mGFTEqfM8n94USk";
 
 	// Url para rescatar todas las imagenes de una peli.
 	// https://api.themoviedb.org/3/movie/{id}/images?api_key=###&language=en&include_image_language=es
@@ -49,11 +52,12 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 
 	}
 
-	// Creo que esta mal, porque yo no quiero un AuthToken, quiero solo la String authToken de esa clase.
+	// Creo que esta mal, porque yo no quiero un AuthToken, quiero solo la
+	// String authToken de esa clase.
 	// PREGUNTAR!!
 	public BusquedaTviso getMediaPorTitulo(String titulo) {
 		AuthToken auth = getAuthTokenTviso();
-		String token = auth.getAuth_token(); 
+		String token = auth.getAuth_token();
 		ClientResource cr = new ClientResource(
 				"https://api.tviso.com/media/search?auth_token=" + token
 						+ "&q=" + titulo);
@@ -64,10 +68,19 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 	// De aqui deberia de sacar dicha String authToken.
 	public AuthToken getAuthTokenTviso() {
 		ClientResource cr = new ClientResource(
-				"https://api.tviso.com/auth_token?id_api=" + TVISO_API_ID + "&secret="
-						+ TVISO_SECRET);
+				"https://api.tviso.com/auth_token?id_api=" + TVISO_API_ID
+						+ "&secret=" + TVISO_SECRET);
 		AuthToken authToken = cr.get(AuthToken.class);
 		return authToken;
+	}
+
+	public Cines getCinesCercanos() {
+		ClientResource cr = new ClientResource(
+				"https://maps.googleapis.com/maps/api/place/nearbysearch/json?key="
+						+ PLACE_API_KEY
+						+ "&location=37.35819,-5.98637&radius=1000&types=movie_theater");
+		Cines cines = cr.get(Cines.class);
+		return cines;
 	}
 
 }

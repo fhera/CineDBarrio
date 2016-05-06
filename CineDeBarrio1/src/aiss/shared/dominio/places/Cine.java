@@ -165,72 +165,76 @@ public class Cine implements Serializable {
 		this.rating = rating;
 	}
 
-	/**
-	 * 
-	 * @return The reference
-	 */
-	public String getReference() {
-		return reference;
-	}
+    /**
+     * 
+     * @return
+     *     The reference
+     */
+    public String getReference() {
+        return reference;
+    }
 
-	/**
-	 * 
-	 * @param reference
-	 *            The reference
-	 */
-	public void setReference(String reference) {
-		this.reference = reference;
-	}
+    /**
+     * 
+     * @param reference
+     *     The reference
+     */
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
 
-	/**
-	 * 
-	 * @return The scope
-	 */
-	public String getScope() {
-		return scope;
-	}
+    /**
+     * 
+     * @return
+     *     The scope
+     */
+    public String getScope() {
+        return scope;
+    }
 
-	/**
-	 * 
-	 * @param scope
-	 *            The scope
-	 */
-	public void setScope(String scope) {
-		this.scope = scope;
-	}
+    /**
+     * 
+     * @param scope
+     *     The scope
+     */
+    public void setScope(String scope) {
+        this.scope = scope;
+    }
 
-	/**
-	 * 
-	 * @return The types
-	 */
-	public List<String> getTypes() {
-		return types;
-	}
+    /**
+     * 
+     * @return
+     *     The types
+     */
+    public List<String> getTypes() {
+        return types;
+    }
 
-	/**
-	 * 
-	 * @param types
-	 *            The types
-	 */
-	public void setTypes(List<String> types) {
-		this.types = types;
-	}
+    /**
+     * 
+     * @param types
+     *     The types
+     */
+    public void setTypes(List<String> types) {
+        this.types = types;
+    }
 
-	/**
-	 * 
-	 * @return The vicinity
-	 */
-	public String getVicinity() {
-		return vicinity;
-	}
+    /**
+     * 
+     * @return
+     *     The vicinity
+     */
+    public String getVicinity() {
+        return vicinity;
+    }
 
-	/**
-	 * 
-	 * @param vicinity
-	 *            The vicinity
-	 */
-	public void setVicinity(String vicinity) {
-		this.vicinity = vicinity;
-	}
+    /**
+     * 
+     * @param vicinity
+     *     The vicinity
+     */
+    public void setVicinity(String vicinity) {
+        this.vicinity = vicinity;
+    }
 
 }

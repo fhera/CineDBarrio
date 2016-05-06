@@ -4,7 +4,10 @@ import java.io.Serializable;
 
 import javax.annotation.Generated;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 @Generated("org.jsonschema2pojo")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Images implements Serializable {
 
 	/**

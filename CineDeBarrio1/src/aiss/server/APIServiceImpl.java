@@ -15,6 +15,7 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 	private static final String TMDB_API_KEY = "08f0211eeab73ad077f12a6a627118f8";
 	private static final String TVISO_API_ID = "3486";
 	private static final String TVISO_SECRET = "sFpnqqvtASHvWPKFANZn";
+	private static final String PLACE_API_KEY= "AIzaSyBNlZU09q-jlc79TF43mGFTEqfM8n94USk";
 
 	// Url para rescatar todas las imagenes de una peli.
 	// https://api.themoviedb.org/3/movie/{id}/images?api_key=###&language=en&include_image_language=es

@@ -12,6 +12,7 @@ public class BusquedaTviso implements Serializable {
 
 	private static final long serialVersionUID = -889915506586195316L;
 	private Media result;
+	private Media1 result1;
 	private Integer error;
 
 	/**
@@ -34,6 +35,18 @@ public class BusquedaTviso implements Serializable {
 	 */
 	public void set0(Media result) {
 		this.result = result;
+	}
+	
+	public Media1 get1() {
+		return result1;
+	}
+
+	/**
+	 * 
+	 * @param result
+	 */
+	public void set1(Media1 result1) {
+		this.result1 = result1;
 	}
 
 	/**

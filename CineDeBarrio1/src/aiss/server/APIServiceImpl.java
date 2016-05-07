@@ -78,7 +78,7 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 		ClientResource cr = new ClientResource(
 				"https://maps.googleapis.com/maps/api/place/nearbysearch/json?key="
 						+ PLACE_API_KEY
-						+ "&location=37.35819,-5.98637&radius=1000&types=movie_theater");
+						+ "&location=37.35819,-5.98637&radius=5000&types=movie_theater");
 		Cines cines = cr.get(Cines.class);
 		return cines;
 	}

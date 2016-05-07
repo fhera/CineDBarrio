@@ -1,10 +1,9 @@
 package aiss.client;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+import aiss.shared.dominio.places.Cine;
+import aiss.shared.dominio.places.Cines;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
 import aiss.shared.dominio.tviso.BusquedaTviso;
@@ -37,7 +36,7 @@ public class CineDeBarrio1 implements EntryPoint {
 	private Label etiquetaEstado = new Label();
 	private HorizontalPanel searchPanel = new HorizontalPanel();
 
-	// En indexTable vamos a añadir el cuerpo del HTML, tales como estrenos,
+	// En indexTable vamos a aï¿½adir el cuerpo del HTML, tales como estrenos,
 	// peliculas y series.
 
 	private final APIServiceAsync servicio = GWT.create(APIService.class);
@@ -142,6 +141,21 @@ public class CineDeBarrio1 implements EntryPoint {
 								etiquetaEstado.setText("");
 							}
 						});
+				servicio.getCinesCercanos(new AsyncCallback<Cines>() {
+
+					@Override
+					public void onFailure(Throwable caught) {
+						// TODO Auto-generated method stub
+						Window.alert("Error en la busqueda: "
+								+ caught.getMessage());
+					}
+
+					@Override
+					public void onSuccess(Cines result) {
+						// TODO Auto-generated method stub
+						showCinesPlaces(result);
+					}
+				});
 
 			}
 
@@ -164,54 +178,11 @@ public class CineDeBarrio1 implements EntryPoint {
 							indexTable.setText(0, 2, "Sinopsis");
 
 							indexTable.setHTML(index, 0,
-									"<img src='http://image.tmdb.org/t/p/w500'"
+									"<img src=http://image.tmdb.org/t/p/w500"
 											+ multi.getPoster_path() + ">");
 							indexTable.setHTML(index, 1, a.getHTML());
 							indexTable.setHTML(index, 2, multi.getOverview());
 							indexTable.setHTML(index, 3, multi.getMedia_type());
-
-							// a.addClickHandler(new ClickHandler() {
-							//
-							// @Override
-							// public void onClick(ClickEvent event) {
-							// // TODO Auto-generated method stub
-							// RootPanel.get("top_valoradas").clear();
-							// RootPanel.get("peliculas").clear();
-							// RootPanel.get("mostrar_busqueda").clear();
-							//
-							// servicio.getPelicula(multi.getId(),
-							// new AsyncCallback<Result>() {
-							//
-							// @Override
-							// public void onFailure(
-							// Throwable caught) {
-							//
-							// }
-							//
-							// @Override
-							// public void onSuccess(
-							// Result result) {
-							// String output = "<fieldset>";
-							// if (result != null) {
-							// output += "<span>"
-							// + result.getTitle()
-							// + "</span>";
-							// }
-							// output += "</fieldset>";
-							//
-							// HTML multimedia = new HTML(
-							// output);
-							//
-							// RootPanel.get(
-							// "mostrar_busqueda")
-							// .add(multimedia);
-							//
-							// }
-							// });
-							//
-							// }
-							// });
-
 						}
 					}
 				} else
@@ -231,7 +202,7 @@ public class CineDeBarrio1 implements EntryPoint {
 				output += "<legend> Busqueda en Tviso </legend>";
 				if (result != null) {
 					if (media != null) {
-						output += "<span>" + media.getName() +"</span>";
+						output += "<span>" + media.getName() + "</span>";
 					}
 					if (media1 != null) {
 						output += "<span> <br>" + media1.getName() + "</span>";
@@ -251,6 +222,23 @@ public class CineDeBarrio1 implements EntryPoint {
 				HTML multimedia = new HTML(output);
 
 				RootPanel.get("mostrar_busqueda").add(multimedia);
+			}
+
+			private void showCinesPlaces(Cines result) {
+				// TODO Auto-generated method stub
+
+				String output = "<fieldset>";
+				output += "<legend> BÃºsqueda de los cines </legend>";
+				for (Cine c : result.getResults()) {
+					if (c.getName().contains("Cine"))
+						output += "<span><br>" + c.getName() + "</br></span>";
+				}
+				output += "</fieldset>";
+
+				HTML cines = new HTML(output);
+
+				RootPanel.get("cines").add(cines);
+
 			}
 
 		});

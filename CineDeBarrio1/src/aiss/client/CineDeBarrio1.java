@@ -178,7 +178,7 @@ public class CineDeBarrio1 implements EntryPoint {
 							indexTable.setText(0, 2, "Sinopsis");
 
 							indexTable.setHTML(index, 0,
-									"<img src=http://image.tmdb.org/t/p/w500"
+									"<img src=http://image.tmdb.org/t/p/w154"
 											+ multi.getPoster_path() + ">");
 							indexTable.setHTML(index, 1, a.getHTML());
 							indexTable.setHTML(index, 2, multi.getOverview());

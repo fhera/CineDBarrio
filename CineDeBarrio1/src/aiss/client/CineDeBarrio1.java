@@ -1,10 +1,18 @@
 package aiss.client;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
 import aiss.shared.dominio.tviso.BusquedaTviso;
 import aiss.shared.dominio.tviso.Media;
 import aiss.shared.dominio.tviso.Media1;
+import aiss.shared.dominio.tviso.Media2;
+import aiss.shared.dominio.tviso.Media3;
+import aiss.shared.dominio.tviso.Media4;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.shared.GWT;
@@ -21,6 +29,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CineDeBarrio1 implements EntryPoint {
 
 	private Button searchButton = new Button("Buscar");
@@ -28,7 +37,7 @@ public class CineDeBarrio1 implements EntryPoint {
 	private Label etiquetaEstado = new Label();
 	private HorizontalPanel searchPanel = new HorizontalPanel();
 
-	// En indexTable vamos a añadir el cuerpo del HTML, tales como estrenos,
+	// En indexTable vamos a a�adir el cuerpo del HTML, tales como estrenos,
 	// peliculas y series.
 
 	private final APIServiceAsync servicio = GWT.create(APIService.class);
@@ -71,7 +80,7 @@ public class CineDeBarrio1 implements EntryPoint {
 		// output += "<span>" + p.getTitle() + "</span></br>";
 		// } else
 		// output +=
-		// "<span> Hay algún que otro problema, lo resolveremos lo antes posible</span>";
+		// "<span> Hay algun que otro problema, lo resolveremos lo antes posible</span>";
 		// output += "</p>";
 		//
 		// HTML pelis = new HTML(output);
@@ -109,7 +118,7 @@ public class CineDeBarrio1 implements EntryPoint {
 
 							@Override
 							public void onSuccess(Busqueda result) {
-								 showMultimediaTMDB(busqueda, result);
+								showMultimediaTMDB(busqueda, result);
 								// searchField.setText("");
 								// etiquetaEstado.setText("");
 							}
@@ -133,7 +142,7 @@ public class CineDeBarrio1 implements EntryPoint {
 								etiquetaEstado.setText("");
 							}
 						});
-				
+
 			}
 
 			private void showMultimediaTMDB(String busqueda, Busqueda result) {
@@ -150,7 +159,8 @@ public class CineDeBarrio1 implements EntryPoint {
 							int index = result.getResults().indexOf(multi) + 1;
 
 							a.setHTML(multi.getTitle());
-							indexTable.setText(0, 0, "Búsqueda en TMBD: " + busqueda);
+							indexTable.setText(0, 0, "Busqueda en TMBD: "
+									+ busqueda);
 							indexTable.setText(0, 2, "Sinopsis");
 
 							indexTable.setHTML(index, 0,
@@ -213,19 +223,34 @@ public class CineDeBarrio1 implements EntryPoint {
 			private void showMediaTViso(String busqueda, BusquedaTviso result) {
 				Media media = result.get0();
 				Media1 media1 = result.get1();
+				Media2 media2 = result.get2();
+				Media3 media3 = result.get3();
+				Media4 media4 = result.get4();
 
 				String output = "<fieldset>";
-				output +="<legend> Búsqueda en Tviso </legend>";
+				output += "<legend> Busqueda en Tviso </legend>";
 				if (result != null) {
-					output += "<span>" + media.getName() + "</span>";
-					output+= "<span>" + media1.getName() + "</span>";
+					if (media != null) {
+						output += "<span>" + media.getName() +"</span>";
+					}
+					if (media1 != null) {
+						output += "<span> <br>" + media1.getName() + "</span>";
+					}
+					if (media2 != null) {
+						output += "<span> <br>" + media2.getName() + "</span>";
+					}
+					if (media3 != null) {
+						output += "<span> <br>" + media3.getName() + "</span>";
+					}
+					if (media4 != null) {
+						output += "<span> <br>" + media4.getName() + "</span>";
+					}
 				}
 				output += "</fieldset>";
 
 				HTML multimedia = new HTML(output);
 
 				RootPanel.get("mostrar_busqueda").add(multimedia);
-
 			}
 
 		});

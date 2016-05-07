@@ -12,9 +12,6 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @Generated("org.jsonschema2pojo")
 public class Cine implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6434635488240857964L;
 	private Geometry geometry;
 	private String icon;

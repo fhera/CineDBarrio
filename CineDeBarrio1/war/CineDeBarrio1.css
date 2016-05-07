@@ -3,11 +3,6 @@
 	margin: 0px;
 }
 
-html, body {
-	height: 100%;
-	width: 100%;
-}
-
 body {
 	background-color: #d8d8d8;
 }
@@ -63,7 +58,11 @@ h1 {
 }
 
 footer {
-	float: left;
-	margin-left: 3em;
-	margin-top: 10%;
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    margin-top: -3em;    
+    padding-top:3em;
+    padding-left:12px;
 }

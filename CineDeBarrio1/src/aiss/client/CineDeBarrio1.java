@@ -4,6 +4,8 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import aiss.shared.dominio.places.Cine;
 import aiss.shared.dominio.places.Cines;
+import aiss.shared.dominio.tmdb.Pelicula;
+import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
 import aiss.shared.dominio.tviso.BusquedaTviso;
@@ -55,45 +57,36 @@ public class CineDeBarrio1 implements EntryPoint {
 		etiquetaEstado.getElement().setAttribute("id", "busqueda");
 
 		RootPanel.get("busqueda").add(searchPanel);
-		// // Parte donde se muestra las pelis.
-		// for (int i = 0; i < 10; i++) {
-		// for (int j = 0; j < 10; j++) {
-		// indexTable.setText(i, j, "Peli " + i + j);
-		//
-		// }
-		// }
-		// S RootPanel.get("peliculas").add(indexTable);
 
-		// servicio.getPelisMejoresValoradas(new AsyncCallback<Pelicula>() {
-		//
-		// @Override
-		// public void onSuccess(Pelicula pelicula) {
-		// showPeliculas(pelicula);
-		// }
-		//
-		// private void showPeliculas(Pelicula pelicula) {
-		// String output = "Hola";
+		servicio.getPelisMejoresValoradas(new AsyncCallback<Peliculas>() {
 
-		// if (pelicula != null) {
-		// for (Result p : pelicula.getResults())
-		// output += "<span>" + p.getTitle() + "</span></br>";
-		// } else
-		// output +=
-		// "<span> Hay algun que otro problema, lo resolveremos lo antes posible</span>";
-		// output += "</p>";
-		//
-		// HTML pelis = new HTML(output);
-		// RootPanel.get("top_valoradas").add(pelis);
-		//
-		// }
-		//
-		// @Override
-		// public void onFailure(Throwable caught) {
-		// // TODO Auto-generated method stub
-		//
-		// }
-		//
-		// });
+			@Override
+			public void onSuccess(Peliculas peliculas) {
+				showPeliculas(peliculas);
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+
+			}
+
+			private void showPeliculas(Peliculas peliculas) {
+				String output = "Hola";
+
+				if (peliculas != null) {
+					for (Pelicula p : peliculas.getResults())
+						output += "<span>" + p.getTitle() + "</span></br>";
+				} else
+					output += "<span> Hay algun que otro problema, lo resolveremos lo antes posible</span>";
+				output += "</p>";
+
+				HTML pelis = new HTML(output);
+				RootPanel.get("top_valoradas").add(pelis);
+
+			}
+
+		});
 
 		searchButton.addClickHandler(new ClickHandler() {
 
@@ -105,6 +98,7 @@ public class CineDeBarrio1 implements EntryPoint {
 				RootPanel.get("top_valoradas").clear();
 				RootPanel.get("peliculas").clear();
 				RootPanel.get("mostrar_busqueda").clear();
+				RootPanel.get("cines").clear();
 
 				servicio.getBuscarMultimediaTMDB(busqueda,
 						new AsyncCallback<Busqueda>() {

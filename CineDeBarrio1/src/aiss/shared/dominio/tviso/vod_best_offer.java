@@ -14,6 +14,7 @@ public class vod_best_offer implements Serializable {
 	private Integer bitMap;
 	private Source source;
 	private String type;
+	private Prices prices;
 
 	/**
 	 * No args constructor for use in serialization
@@ -25,7 +26,7 @@ public class vod_best_offer implements Serializable {
 	 * 
 	 * @return The bitMap
 	 */
-	public Integer getBitMap() {
+	public Integer getBitMap_0() {
 		return bitMap;
 	}
 
@@ -34,7 +35,7 @@ public class vod_best_offer implements Serializable {
 	 * @param bitMap
 	 *            The bitMap
 	 */
-	public void setBitMap(Integer bitMap) {
+	public void setBitMap_0(Integer bitMap) {
 		this.bitMap = bitMap;
 	}
 
@@ -42,7 +43,7 @@ public class vod_best_offer implements Serializable {
 	 * 
 	 * @return The source
 	 */
-	public Source getSource() {
+	public Source getSource_0() {
 		return source;
 	}
 
@@ -51,7 +52,7 @@ public class vod_best_offer implements Serializable {
 	 * @param source
 	 *            The source
 	 */
-	public void setSource(Source source) {
+	public void setSource_0(Source source) {
 		this.source = source;
 	}
 
@@ -59,11 +60,17 @@ public class vod_best_offer implements Serializable {
 	 * 
 	 * @return The type
 	 */
-	public String getType() {
+	public String getType_0() {
 		return type;
 
 	}
 
+	public Prices getPrices() {
+		return prices;
+	}
+	public void setPrices(Prices prices) {
+		this.prices = prices;
+	}
 	@Override
 	public String toString() {
 		return "VodBestOffer [bitMap=" + bitMap + ", type=" + type + "]";

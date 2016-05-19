@@ -1,8 +1,6 @@
 package aiss.shared.dominio.tviso;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.Generated;
 
@@ -12,19 +10,22 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Media implements Serializable {
 
-	private static final long serialVersionUID = -8388941791805584549L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9172657816288747794L;
 	private Integer idm;
 	private Integer mediaType;
 	private String mediaStyle;
 	private String imdb;
 	private Double rating;
 	private String name;
-	private String originalName;
+	private String original_name;
 	private Images images;
 	private String maingenre;
 	private Integer year;
 	private String plot;	
-	private String idMedia;
+	private String id_media;
 	private vod_best_offer vod_best_offer;
 
 	/**
@@ -128,7 +129,7 @@ public class Media implements Serializable {
 	 * @return The originalName
 	 */
 	public String getOriginalName() {
-		return originalName;
+		return original_name;
 	}
 
 	/**
@@ -136,7 +137,7 @@ public class Media implements Serializable {
 	 *            The original_name
 	 */
 	public void setOriginalName(String originalName) {
-		this.originalName = originalName;
+		this.original_name = originalName;
 	}
 
 	/**
@@ -203,7 +204,7 @@ public class Media implements Serializable {
 	 * @return The idMedia
 	 */
 	public String getIdMedia() {
-		return idMedia;
+		return id_media;
 	}
 
 	/**
@@ -211,7 +212,7 @@ public class Media implements Serializable {
 	 *            The id_media
 	 */
 	public void setIdMedia(String idMedia) {
-		this.idMedia = idMedia;
+		this.id_media = idMedia;
 	}
 
 	/**

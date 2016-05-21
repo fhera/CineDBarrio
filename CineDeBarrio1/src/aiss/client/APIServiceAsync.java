@@ -4,6 +4,7 @@ import aiss.shared.dominio.places.Cines;
 import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
+import aiss.shared.dominio.trakttv.ListSeries;
 import aiss.shared.dominio.tviso.AuthToken;
 import aiss.shared.dominio.tviso.BusquedaTviso;
 
@@ -18,10 +19,12 @@ public interface APIServiceAsync {
 
 	void getPelicula(Integer id, AsyncCallback<Multimedia> callback);
 
-	void getMediaPorTitulo(String titulo,
-			AsyncCallback<BusquedaTviso> callback);
+	void getMediaPorTitulo(String titulo, AsyncCallback<BusquedaTviso> callback);
+
 	void getAuthTokenTviso(AsyncCallback<AuthToken> callback);
 
 	void getCinesCercanos(AsyncCallback<Cines> callback);
+
+	void getSerie(String serie, AsyncCallback<ListSeries> callback);
 
 }

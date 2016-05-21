@@ -10,41 +10,32 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 public class Pelicula implements Serializable {
 
 	private static final long serialVersionUID = -6096012488295591294L;
-	private String posterPath;
 	private Boolean adult;
-	private String overview;
-	private String releaseDate;
-	private List<Integer> genreIds = new ArrayList<Integer>();
+	private String backdrop_path;
+	private List<Integer> genre_ids = new ArrayList<Integer>();
 	private Integer id;
-	private String originalTitle;
-	private String originalLanguage;
-	private String title;
-	private String backdropPath;
+	private String original_language;
+	private String original_title;
+	private String overview;
+	private String release_date;
+	private String poster_path;
 	private Double popularity;
-	private Integer voteCount;
+	private String title;
 	private Boolean video;
-	private Integer voteAverage;
-	
-	public Pelicula(){
-		
+	private Double vote_average;
+	private Integer vote_count;
+	private String media_type;
+	private String first_air_date;
+	private String original_name;
+	private List<String> origin_country = new ArrayList<String>();
+	private String name;
+
+	 public Pelicula() {
+
 	}
 
 	/**
-	 * @return The posterPath
-	 */
-	public String getPosterPath() {
-		return posterPath;
-	}
-
-	/**
-	 * @param posterPath
-	 *            The poster_path
-	 */
-	public void setPosterPath(String posterPath) {
-		this.posterPath = posterPath;
-	}
-
-	/**
+	 * 
 	 * @return The adult
 	 */
 	public Boolean getAdult() {
@@ -52,6 +43,7 @@ public class Pelicula implements Serializable {
 	}
 
 	/**
+	 * 
 	 * @param adult
 	 *            The adult
 	 */
@@ -60,51 +52,41 @@ public class Pelicula implements Serializable {
 	}
 
 	/**
-	 * @return The overview
+	 * 
+	 * @return The backdropPath
 	 */
-	public String getOverview() {
-		return overview;
+	public String getBackdrop_path() {
+		return backdrop_path;
 	}
 
 	/**
-	 * @param overview
-	 *            The overview
+	 * 
+	 * @param backdropPath
+	 *            The backdrop_path
 	 */
-	public void setOverview(String overview) {
-		this.overview = overview;
+	public void setBackdrop_path(String backdropPath) {
+		this.backdrop_path = backdropPath;
 	}
 
 	/**
-	 * @return The releaseDate
-	 */
-	public String getReleaseDate() {
-		return releaseDate;
-	}
-
-	/**
-	 * @param releaseDate
-	 *            The release_date
-	 */
-	public void setReleaseDate(String releaseDate) {
-		this.releaseDate = releaseDate;
-	}
-
-	/**
+	 * 
 	 * @return The genreIds
 	 */
-	public List<Integer> getGenreIds() {
-		return genreIds;
+	public List<Integer> getGenre_ids() {
+		return genre_ids;
 	}
 
 	/**
+	 * 
 	 * @param genreIds
 	 *            The genre_ids
 	 */
-	public void setGenreIds(List<Integer> genreIds) {
-		this.genreIds = genreIds;
+	public void setGenre_ids(List<Integer> genreIds) {
+		this.genre_ids = genreIds;
 	}
 
 	/**
+	 * 
 	 * @return The id
 	 */
 	public Integer getId() {
@@ -112,6 +94,7 @@ public class Pelicula implements Serializable {
 	}
 
 	/**
+	 * 
 	 * @param id
 	 *            The id
 	 */
@@ -120,66 +103,92 @@ public class Pelicula implements Serializable {
 	}
 
 	/**
-	 * @return The originalTitle
-	 */
-	public String getOriginalTitle() {
-		return originalTitle;
-	}
-
-	/**
-	 * @param originalTitle
-	 *            The original_title
-	 */
-	public void setOriginalTitle(String originalTitle) {
-		this.originalTitle = originalTitle;
-	}
-
-	/**
+	 * 
 	 * @return The originalLanguage
 	 */
-	public String getOriginalLanguage() {
-		return originalLanguage;
+	public String getOriginal_language() {
+		return original_language;
 	}
 
 	/**
+	 * 
 	 * @param originalLanguage
 	 *            The original_language
 	 */
-	public void setOriginalLanguage(String originalLanguage) {
-		this.originalLanguage = originalLanguage;
+	public void setOriginal_language(String originalLanguage) {
+		this.original_language = originalLanguage;
 	}
 
 	/**
-	 * @return The title
+	 * 
+	 * @return The originalTitle
 	 */
-	public String getTitle() {
-		return title;
+	public String getOriginal_title() {
+		return original_title;
 	}
 
 	/**
-	 * @param title
-	 *            The title
+	 * 
+	 * @param originalTitle
+	 *            The original_title
 	 */
-	public void setTitle(String title) {
-		this.title = title;
+	public void setOriginal_title(String originalTitle) {
+		this.original_title = originalTitle;
 	}
 
 	/**
-	 * @return The backdropPath
+	 * 
+	 * @return The overview
 	 */
-	public String getBackdropPath() {
-		return backdropPath;
+	public String getOverview() {
+		return overview;
 	}
 
 	/**
-	 * @param backdropPath
-	 *            The backdrop_path
+	 * 
+	 * @param overview
+	 *            The overview
 	 */
-	public void setBackdropPath(String backdropPath) {
-		this.backdropPath = backdropPath;
+	public void setOverview(String overview) {
+		this.overview = overview;
 	}
 
 	/**
+	 * 
+	 * @return The releaseDate
+	 */
+	public String getRelease_date() {
+		return release_date;
+	}
+
+	/**
+	 * 
+	 * @param releaseDate
+	 *            The release_date
+	 */
+	public void setRelease_date(String releaseDate) {
+		this.release_date = releaseDate;
+	}
+
+	/**
+	 * 
+	 * @return The posterPath
+	 */
+	public String getPoster_path() {
+		return poster_path;
+	}
+
+	/**
+	 * 
+	 * @param posterPath
+	 *            The poster_path
+	 */
+	public void setPoster_path(String posterPath) {
+		this.poster_path = posterPath;
+	}
+
+	/**
+	 * 
 	 * @return The popularity
 	 */
 	public Double getPopularity() {
@@ -187,6 +196,7 @@ public class Pelicula implements Serializable {
 	}
 
 	/**
+	 * 
 	 * @param popularity
 	 *            The popularity
 	 */
@@ -195,21 +205,24 @@ public class Pelicula implements Serializable {
 	}
 
 	/**
-	 * @return The voteCount
+	 * 
+	 * @return The title
 	 */
-	public Integer getVoteCount() {
-		return voteCount;
+	public String getTitle() {
+		return title;
 	}
 
 	/**
-	 * @param voteCount
-	 *            The vote_count
+	 * 
+	 * @param title
+	 *            The title
 	 */
-	public void setVoteCount(Integer voteCount) {
-		this.voteCount = voteCount;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	/**
+	 * 
 	 * @return The video
 	 */
 	public Boolean getVideo() {
@@ -217,6 +230,7 @@ public class Pelicula implements Serializable {
 	}
 
 	/**
+	 * 
 	 * @param video
 	 *            The video
 	 */
@@ -225,18 +239,137 @@ public class Pelicula implements Serializable {
 	}
 
 	/**
+	 * 
 	 * @return The voteAverage
 	 */
-	public Integer getVoteAverage() {
-		return voteAverage;
+	public Double getVote_average() {
+		return vote_average;
 	}
 
 	/**
+	 * 
 	 * @param voteAverage
 	 *            The vote_average
 	 */
-	public void setVoteAverage(Integer voteAverage) {
-		this.voteAverage = voteAverage;
+	public void setVote_average(Double voteAverage) {
+		this.vote_average = voteAverage;
+	}
+
+	/**
+	 * 
+	 * @return The voteCount
+	 */
+	public Integer getVote_count() {
+		return vote_count;
+	}
+
+	/**
+	 * 
+	 * @param voteCount
+	 *            The vote_count
+	 */
+	public void setVote_count(Integer voteCount) {
+		this.vote_count = voteCount;
+	}
+
+	/**
+	 * 
+	 * @return The mediaType
+	 */
+	public String getMedia_type() {
+		return media_type;
+	}
+
+	/**
+	 * 
+	 * @param mediaType
+	 *            The media_type
+	 */
+	public void setMedia_type(String mediaType) {
+		this.media_type = mediaType;
+	}
+
+	/**
+	 * 
+	 * @return The firstAirDate
+	 */
+	public String getFirst_air_date() {
+		return first_air_date;
+	}
+
+	/**
+	 * 
+	 * @param firstAirDate
+	 *            The first_air_date
+	 */
+	public void setFirst_air_date(String firstAirDate) {
+		this.first_air_date = firstAirDate;
+	}
+
+	/**
+	 * 
+	 * @return The originalName
+	 */
+	public String getOriginal_name() {
+		return original_name;
+	}
+
+	/**
+	 * 
+	 * @param originalName
+	 *            The original_name
+	 */
+	public void setOriginal_name(String originalName) {
+		this.original_name = originalName;
+	}
+
+	/**
+	 * 
+	 * @return The originCountry
+	 */
+	public List<String> getOrigin_country() {
+		return origin_country;
+	}
+
+	/**
+	 * 
+	 * @param originCountry
+	 *            The origin_country
+	 */
+	public void setOrigin_country(List<String> originCountry) {
+		this.origin_country = originCountry;
+	}
+
+	/**
+	 * 
+	 * @return The name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * 
+	 * @param name
+	 *            The name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Result [adult=" + adult + ", backdropPath=" + backdrop_path
+				+ ", genreIds=" + genre_ids + ", id=" + id
+				+ ", originalLanguage=" + original_language
+				+ ", originalTitle=" + original_title + ", overview="
+				+ overview + ", releaseDate=" + release_date + ", posterPath="
+				+ poster_path + ", popularity=" + popularity + ", title="
+				+ title + ", video=" + video + ", voteAverage=" + vote_average
+				+ ", voteCount=" + vote_count + ", mediaType=" + media_type
+				+ ", firstAirDate=" + first_air_date + ", originalName="
+				+ original_name + ", originCountry=" + origin_country
+				+ ", name=" + name + "]";
 	}
 
 }

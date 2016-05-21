@@ -60,7 +60,7 @@ public class vod_best_offer implements Serializable {
 	 * 
 	 * @return The type
 	 */
-	public String getType_0() {
+	public String getType() {
 		return type;
 
 	}

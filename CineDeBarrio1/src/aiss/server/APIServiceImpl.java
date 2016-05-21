@@ -1,12 +1,15 @@
 package aiss.server;
 
+import org.restlet.engine.header.Header;
 import org.restlet.resource.ClientResource;
+import org.restlet.util.Series;
 
 import aiss.client.APIService;
 import aiss.shared.dominio.places.Cines;
 import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
+import aiss.shared.dominio.trakttv.ListSeries;
 import aiss.shared.dominio.tviso.AuthToken;
 import aiss.shared.dominio.tviso.BusquedaTviso;
 
@@ -30,7 +33,7 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 	public Peliculas getPelisMejoresValoradas() {
 		ClientResource cr = new ClientResource(
 				"http://api.themoviedb.org/3/movie/top_rated?api_key="
-						+ TMDB_API_KEY);
+						+ TMDB_API_KEY + "&language=es");
 		Peliculas peli = cr.get(Peliculas.class);
 		return peli;
 	}
@@ -52,9 +55,6 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 
 	}
 
-	// Creo que esta mal, porque yo no quiero un AuthToken, quiero solo la
-	// String authToken de esa clase.
-	// PREGUNTAR!!
 	public BusquedaTviso getMediaPorTitulo(String titulo) {
 		AuthToken auth = getAuthTokenTviso();
 		String token = auth.getAuth_token();
@@ -83,4 +83,22 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 		return cines;
 	}
 
+	public ListSeries getSerie(String serie) {
+		ClientResource cr = new ClientResource(
+				"https://api-v2launch.trakt.tv/search?query=" + serie);
+
+		Series<Header> headers = (Series<Header>) cr.getRequestAttributes()
+				.get("org.restlet.http.headers");
+
+		// headers.set("<header-name>", "<header-value>");
+
+		headers.set("Content-Type", "application/json");
+		headers.set("trakt-api-version", "2");
+		headers.set("trakt-api-version",
+				"b3dd0f403bdd83ae3a465bcc958025f208a511afbcfde738757d877213ed8eeb");
+
+		ListSeries series = cr.get(ListSeries.class);
+
+		return series;
+	}
 }

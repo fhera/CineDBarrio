@@ -1,5 +1,7 @@
 package aiss.client;
 
+import java.util.Collection;
+
 import aiss.shared.dominio.places.Cines;
 import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
@@ -12,19 +14,24 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface APIServiceAsync {
 
+	// TMDB
 	void getPelisMejoresValoradas(AsyncCallback<Peliculas> callback);
+
+	void getPelisDeLaSemana(AsyncCallback<Peliculas> callback);
 
 	void getBuscarMultimediaTMDB(String busqueda,
 			AsyncCallback<Busqueda> callback);
 
 	void getPelicula(Integer id, AsyncCallback<Multimedia> callback);
 
+	// Tviso
 	void getMediaPorTitulo(String titulo, AsyncCallback<BusquedaTviso> callback);
 
 	void getAuthTokenTviso(AsyncCallback<AuthToken> callback);
 
+	// Google Place
 	void getCinesCercanos(AsyncCallback<Cines> callback);
 
-	void getSerie(String serie, AsyncCallback<ListSeries> callback);
+	void getSerie(String serie, AsyncCallback<Collection<ListSeries>> callback);
 
 }

@@ -1,6 +1,10 @@
 package aiss.server;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.restlet.engine.header.Header;
+import org.restlet.engine.header.HeaderConstants;
 import org.restlet.resource.ClientResource;
 import org.restlet.util.Series;
 
@@ -33,6 +37,14 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 	public Peliculas getPelisMejoresValoradas() {
 		ClientResource cr = new ClientResource(
 				"http://api.themoviedb.org/3/movie/top_rated?api_key="
+						+ TMDB_API_KEY + "&language=es");
+		Peliculas peli = cr.get(Peliculas.class);
+		return peli;
+	}
+
+	public Peliculas getPelisDeLaSemana() {
+		ClientResource cr = new ClientResource(
+				"http://api.themoviedb.org/3/movie/now_playing?api_key="
 						+ TMDB_API_KEY + "&language=es");
 		Peliculas peli = cr.get(Peliculas.class);
 		return peli;
@@ -83,22 +95,43 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 		return cines;
 	}
 
-	public ListSeries getSerie(String serie) {
+	@SuppressWarnings("unchecked")
+	// TODO Preguntar por cómo poner datos en el HEADER de la petición GET.
+	public Collection<ListSeries> getSerie(String serie) {
 		ClientResource cr = new ClientResource(
-				"https://api-v2launch.trakt.tv/search?query=" + serie);
+				"https://api-v2launch.trakt.tv/search?query=" + serie+"&type=show");
 
-		Series<Header> headers = (Series<Header>) cr.getRequestAttributes()
-				.get("org.restlet.http.headers");
-
-		// headers.set("<header-name>", "<header-value>");
-
-		headers.set("Content-Type", "application/json");
-		headers.set("trakt-api-version", "2");
-		headers.set("trakt-api-version",
+		addHeader(cr, "Content-Type", "application/json");
+		addHeader(cr, "trakt-api-version", "2");
+		addHeader(cr, "trakt-api-key",
 				"b3dd0f403bdd83ae3a465bcc958025f208a511afbcfde738757d877213ed8eeb");
 
-		ListSeries series = cr.get(ListSeries.class);
+		// Series<Header> headers = (Series<Header>) cr.getRequestAttributes()
+		// .get("org.restlet.http.headers");
+		//
+		// // headers.set("<header-name>", "<header-value>");
+		//
+		// headers.set("Content-Type", "application/json");
+		// headers.set("trakt-api-version", "2");
+		// headers.set("trakt-api-version",
+		// "b3dd0f403bdd83ae3a465bcc958025f208a511afbcfde738757d877213ed8eeb");
 
-		return series;
+		ListSeries[] series = cr.get(ListSeries[].class);
+
+		return Arrays.asList(series);
+	}
+
+	@SuppressWarnings("unchecked")
+	private void addHeader(ClientResource cr, String key, String value) {
+		Series<Header> headers = (Series<Header>) cr.getRequestAttributes()
+				.get(HeaderConstants.ATTRIBUTE_HEADERS);
+		if (headers == null) {
+			headers = new Series<Header>(Header.class);
+			cr.getRequestAttributes().put(HeaderConstants.ATTRIBUTE_HEADERS,
+					headers);
+		}
+
+		headers.add(key, value);
+
 	}
 }

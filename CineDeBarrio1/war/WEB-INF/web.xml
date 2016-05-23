@@ -15,6 +15,7 @@
 		<servlet-name>CineServlet</servlet-name>
 		<url-pattern>/cinedebarrio1/servicio</url-pattern>
 	</servlet-mapping>
+	
 
 	<!-- Default page to serve -->
 	<welcome-file-list>

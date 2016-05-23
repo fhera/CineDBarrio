@@ -1,9 +1,11 @@
 package aiss.client;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+import aiss.client.TMDB.PeliculaView;
 import aiss.client.TMDB.TMDBView;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -24,12 +26,15 @@ public class CineDeBarrio1 implements EntryPoint {
 		CineDeBarrio1.go(token, new HashMap<String, String>());
 	}
 
-	private static void go(String token, HashMap<String, String> params) {
+	public static void go(String token, Map<String, String> params) {
 		Panel p = RootPanel.get();
 		if (token == "init") {
 			p.clear();
 			p.add(new TMDBView());
+		} else if (token == "pelicula") {
+			p.clear();
+			p.add(new PeliculaView(params));
 		}
 	}
-	
+
 }

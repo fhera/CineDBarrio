@@ -1,5 +1,7 @@
 package aiss.client;
 
+import java.util.Collection;
+
 import aiss.shared.dominio.places.Cines;
 import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
@@ -16,6 +18,8 @@ public interface APIService extends RemoteService {
 	// TMDB
 	Peliculas getPelisMejoresValoradas();
 
+	Peliculas getPelisDeLaSemana();
+
 	Busqueda getBuscarMultimediaTMDB(String busqueda);
 
 	Multimedia getPelicula(Integer id);
@@ -25,7 +29,8 @@ public interface APIService extends RemoteService {
 
 	AuthToken getAuthTokenTviso();
 
-	ListSeries getSerie(String serie);
+	// Trakt.tv
+	Collection<ListSeries> getSerie(String serie);
 
 	// GooglePlaces
 	Cines getCinesCercanos();

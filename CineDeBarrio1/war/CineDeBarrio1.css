@@ -27,7 +27,6 @@ h1 {
 	z-index: 10;
 }
 
-
 #busqueda {
 	position: fixed;
 	float: right;
@@ -49,9 +48,10 @@ h1 {
 
 #top_valoradas {
 	float: left;
-	margin-top: 2.8em;
+	margin-top: 1em;
 	margin-left: 1%;
 }
+
 #mostrar_busqueda {
 	float: left;
 	margin-top: 2.8em;
@@ -69,12 +69,21 @@ h1 {
 	top: 3em;
 }
 
+table {
+	max-width: 100%;
+}
+
+img {
+	height: 200px;
+	margin-right: 1px;
+}
+
 footer {
-    clear: both;
-    position: relative;
-    z-index: 10;
-    height: 3em;
-    margin-top: -3em;    
-    padding-top:3em;
-    padding-left:12px;
+	clear: both;
+	position: relative;
+	z-index: 10;
+	height: 3em;
+	margin-top: -3em;
+	padding-top: 3em;
+	padding-left: 12px;
 }

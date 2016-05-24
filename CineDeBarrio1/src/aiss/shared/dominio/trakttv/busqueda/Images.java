@@ -1,5 +1,5 @@
 
-package aiss.shared.dominio.trakttv;
+package aiss.shared.dominio.trakttv.busqueda;
 
 import java.io.Serializable;
 

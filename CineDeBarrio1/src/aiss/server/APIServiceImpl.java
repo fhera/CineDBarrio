@@ -13,7 +13,8 @@ import aiss.shared.dominio.places.Cines;
 import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
-import aiss.shared.dominio.trakttv.ListSeries;
+import aiss.shared.dominio.trakttv.LSeries;
+import aiss.shared.dominio.trakttv.busqueda.ListSeries;
 import aiss.shared.dominio.tviso.AuthToken;
 import aiss.shared.dominio.tviso.BusquedaTviso;
 
@@ -41,6 +42,40 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 		Peliculas peli = cr.get(Peliculas.class);
 		return peli;
 	}
+
+	public Collection<LSeries> getSeriesPopulares() {
+		ClientResource cr = new ClientResource(
+				"https://api-v2launch.trakt.tv/shows/trending");
+
+		addHeader(cr, "Content-Type", "application/json");
+		addHeader(cr, "trakt-api-version", "2");
+		addHeader(cr, "trakt-api-key",
+				"b3dd0f403bdd83ae3a465bcc958025f208a511afbcfde738757d877213ed8eeb");
+		LSeries[] series = cr.get(LSeries[].class);
+
+		return Arrays.asList(series);
+	}
+
+//	// Conseguir una serie con el id de trak-show
+//	public List<LSeries> getSerie() {
+//		List<LSeries> list = new LinkedList<>();
+//		Collection<LSeries> listIds = getSeriesPopulares();
+//		Ids id = new Ids();
+//		for (LSeries s : listIds) {
+//			id = s.getShow().getIds();
+//			ClientResource cr = new ClientResource(
+//					"https://api-v2launch.trakt.tv/search?id_type=trakt-show&id="
+//							+ id);
+//			addHeader(cr, "Content-Type", "application/json");
+//			addHeader(cr, "trakt-api-version", "2");
+//			addHeader(cr, "trakt-api-key",
+//					"b3dd0f403bdd83ae3a465bcc958025f208a511afbcfde738757d877213ed8eeb");
+//			LSeries ls = cr.get(LSeries.class);
+//			list.add(ls);
+//		}
+//
+//		return list;
+//	}
 
 	public Peliculas getPelisDeLaSemana() {
 		ClientResource cr = new ClientResource(
@@ -95,27 +130,15 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 		return cines;
 	}
 
-	@SuppressWarnings("unchecked")
-	// TODO Preguntar por cómo poner datos en el HEADER de la petición GET.
-	public Collection<ListSeries> getSerie(String serie) {
+	public Collection<ListSeries> getSeries(String serie) {
 		ClientResource cr = new ClientResource(
-				"https://api-v2launch.trakt.tv/search?query=" + serie+"&type=show");
+				"https://api-v2launch.trakt.tv/search?query=" + serie
+						+ "&type=show");
 
 		addHeader(cr, "Content-Type", "application/json");
 		addHeader(cr, "trakt-api-version", "2");
 		addHeader(cr, "trakt-api-key",
 				"b3dd0f403bdd83ae3a465bcc958025f208a511afbcfde738757d877213ed8eeb");
-
-		// Series<Header> headers = (Series<Header>) cr.getRequestAttributes()
-		// .get("org.restlet.http.headers");
-		//
-		// // headers.set("<header-name>", "<header-value>");
-		//
-		// headers.set("Content-Type", "application/json");
-		// headers.set("trakt-api-version", "2");
-		// headers.set("trakt-api-version",
-		// "b3dd0f403bdd83ae3a465bcc958025f208a511afbcfde738757d877213ed8eeb");
-
 		ListSeries[] series = cr.get(ListSeries[].class);
 
 		return Arrays.asList(series);

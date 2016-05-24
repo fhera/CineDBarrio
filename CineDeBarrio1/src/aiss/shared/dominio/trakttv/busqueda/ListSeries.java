@@ -1,8 +1,7 @@
 
-package aiss.shared.dominio.trakttv;
+package aiss.shared.dominio.trakttv.busqueda;
 
 import java.io.Serializable;
-import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 

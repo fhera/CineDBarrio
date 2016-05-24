@@ -1,5 +1,5 @@
 
-package aiss.shared.dominio.trakttv;
+package aiss.shared.dominio.trakttv.busqueda;
 
 import java.io.Serializable;
 
@@ -9,16 +9,15 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @Generated("org.jsonschema2pojo")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Poster implements Serializable{
+public class Fanart implements Serializable{
 
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 4878169019124432763L;
+	private static final long serialVersionUID = 8103384479151205454L;
 	private String full;
     private String medium;
     private String thumb;
-
     /**
      * 
      * @return
@@ -75,7 +74,7 @@ public class Poster implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Poster [full=" + full + ", medium=" + medium + ", thumb="
+		return "Fanart [full=" + full + ", medium=" + medium + ", thumb="
 				+ thumb + "]";
 	}
 

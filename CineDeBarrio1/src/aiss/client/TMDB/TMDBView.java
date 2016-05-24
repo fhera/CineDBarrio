@@ -12,7 +12,8 @@ import aiss.shared.dominio.tmdb.Pelicula;
 import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
-import aiss.shared.dominio.trakttv.ListSeries;
+import aiss.shared.dominio.trakttv.LSeries;
+import aiss.shared.dominio.trakttv.busqueda.ListSeries;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -56,8 +57,19 @@ public class TMDBView extends Composite {
 
 		RootPanel.get("busqueda").add(searchPanel);
 
-		servicio.getPelisDeLaSemana(new AsyncCallback<Peliculas>() {
+		servicio.getSeriesPopulares(new AsyncCallback<Collection<LSeries>>() {
 
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void onSuccess(Collection<LSeries> result) {
+				showSeries(result);
+			}
+		});
+		servicio.getPelisDeLaSemana(new AsyncCallback<Peliculas>() {
 			@Override
 			public void onSuccess(Peliculas peliculas) {
 				showPeliculas(peliculas);
@@ -66,9 +78,7 @@ public class TMDBView extends Composite {
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
-
 			}
-
 		});
 
 		searchField.addKeyDownHandler(new KeyDownHandler() {
@@ -101,7 +111,7 @@ public class TMDBView extends Composite {
 									// etiquetaEstado.setText("");
 								}
 							});
-					servicio.getSerie(busqueda,
+					servicio.getSeries(busqueda,
 							new AsyncCallback<Collection<ListSeries>>() {
 
 								@Override
@@ -120,7 +130,6 @@ public class TMDBView extends Composite {
 								}
 							});
 				}
-
 			}
 		});
 
@@ -190,10 +199,12 @@ public class TMDBView extends Composite {
 		});
 	}
 
+	// A partir de aquí definimos los métodos para implementar las
+	// funcionalidades
 	private void showPeliculas(Peliculas peliculas) {
 		final HorizontalPanel dock = new HorizontalPanel();
 		Image poster = new Image();
-		HTML title = new HTML("Películas del día: ");
+		HTML title = new HTML("Películas actuales: ");
 		if (peliculas != null) {
 			for (int index = 0; index < 9; index++) {
 				final Pelicula p = peliculas.getResults().get(index);
@@ -213,7 +224,6 @@ public class TMDBView extends Composite {
 						// TODO Auto-generated method stub
 						// RootPanel.get().clear();
 						Window.alert(p.getTitle());
-
 					}
 				});
 
@@ -230,6 +240,27 @@ public class TMDBView extends Composite {
 		RootPanel.get("top_valoradas").add(dock);
 	}
 
+	private void showSeries(Collection<LSeries> listSeries) {
+		HTML title = new HTML("Series actuales: ");
+
+		final FlexTable indexTable = new FlexTable();
+		Image poster = new Image();
+		int index = 1;
+		if (listSeries != null) {
+			for (LSeries serie : listSeries) {
+
+//				poster.setUrl(serie.getShow().getImages().getPoster()
+//						.getThumb());
+
+				indexTable.setText(0, 0, "Prueba");
+				indexTable.setHTML(0, index, serie.getShow().getTitle());
+				index++;
+			}
+		}
+		RootPanel.get("top_valoradas").add(title);
+		RootPanel.get("top_valoradas").add(indexTable);
+	}
+
 	private void showMultimediaTMDB(String busqueda, Busqueda result) {
 		final HorizontalPanel indexTable = new HorizontalPanel();
 		HTML title = new HTML("Busqueda en TMBD: " + busqueda);
@@ -241,19 +272,16 @@ public class TMDBView extends Composite {
 					indexTable.add(new HTML("<a href=>"
 							+ "<img src=http://image.tmdb.org/t/p/w154"
 							+ multi.getPoster_path() + ">" + "</a>"));
-
 				} else
 					indexTable.add(new HTML("<a href=>"
 							+ "<img src=http://image.tmdb.org/t/p/w154"
 							+ multi.getPoster_path() + ">" + "</a>"
 							+ multi.getTitle()));
-
 			}
 		} else
 			indexTable.add(new HTML("Sin resultados."));
 		RootPanel.get("mostrar_busqueda").add(title);
 		RootPanel.get("mostrar_busqueda").add(indexTable);
-
 	}
 
 	// private void showMediaTViso(String busqueda, BusquedaTviso
@@ -295,12 +323,17 @@ public class TMDBView extends Composite {
 
 	private void showSerieTrakttv(String busqueda, Collection<ListSeries> result) {
 		final FlexTable indexTable = new FlexTable();
+		Image poster = new Image();
 		int index = 1;
 		if (result != null) {
 			for (ListSeries serie : result) {
-				
+
+				poster.setUrl(serie.getShow().getImages().getPoster()
+						.getThumb());
+
 				indexTable.setText(0, 0, "Prueba");
-				indexTable.setHTML(0, index, serie.getShow().getTitle());
+				indexTable.setHTML(0, index, poster
+						+ serie.getShow().getTitle());
 				index++;
 			}
 		}

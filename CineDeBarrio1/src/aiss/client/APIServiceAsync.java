@@ -6,7 +6,8 @@ import aiss.shared.dominio.places.Cines;
 import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
-import aiss.shared.dominio.trakttv.ListSeries;
+import aiss.shared.dominio.trakttv.LSeries;
+import aiss.shared.dominio.trakttv.busqueda.ListSeries;
 import aiss.shared.dominio.tviso.AuthToken;
 import aiss.shared.dominio.tviso.BusquedaTviso;
 
@@ -32,6 +33,9 @@ public interface APIServiceAsync {
 	// Google Place
 	void getCinesCercanos(AsyncCallback<Cines> callback);
 
-	void getSerie(String serie, AsyncCallback<Collection<ListSeries>> callback);
+	// Trakt.tv
+	void getSeries(String serie, AsyncCallback<Collection<ListSeries>> callback);
+
+	void getSeriesPopulares(AsyncCallback<Collection<LSeries>> callback);
 
 }

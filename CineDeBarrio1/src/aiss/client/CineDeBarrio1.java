@@ -5,8 +5,10 @@ import java.util.Map;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-import aiss.client.TMDB.PeliculaView;
-import aiss.client.TMDB.TMDBView;
+import aiss.client.vistas.BusquedaView;
+import aiss.client.vistas.PeliculaView;
+import aiss.client.vistas.TMDBView;
+import aiss.client.vistas.VistaBase;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -19,21 +21,31 @@ public class CineDeBarrio1 implements EntryPoint {
 	HorizontalPanel menu = new HorizontalPanel();
 
 	public void onModuleLoad() {
-		go("init", new HashMap<String, String>());
+		go("init", new HashMap<String, Object>());
 	}
 
 	public static void go(String token) {
-		CineDeBarrio1.go(token, new HashMap<String, String>());
+		CineDeBarrio1.go(token, new HashMap<String, Object>());
 	}
 
-	public static void go(String token, Map<String, String> params) {
-		Panel p = RootPanel.get();
+	public static void go(String token, Map<String, Object> params) {
+		Panel busqueda = RootPanel.get("busqueda");
+		Panel body = RootPanel.get("body");
 		if (token == "init") {
-			p.clear();
-			p.add(new TMDBView());
+			busqueda.clear();
+			body.clear();
+
+			busqueda.add(new VistaBase(params));
+			body.add(new TMDBView(params));
+
+		} else if (token == "busqueda") {
+			body.clear();
+
+			body.add(new BusquedaView(params));
 		} else if (token == "pelicula") {
-//			p.clear();
-			p.add(new PeliculaView());
+			body.clear();
+
+			body.add(new PeliculaView(params));
 		}
 	}
 

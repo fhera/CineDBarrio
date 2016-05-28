@@ -42,7 +42,7 @@ BUTTON#busqueda.gwt-Button {
 }
 
 DIV#titulo.gwt-HTML {
-	padding-top: 50px;
+	padding-top: 30px;
 }
 
 TABLE {
@@ -65,6 +65,13 @@ IFRAME#__gwt_historyFrame {
 	width: 1180px;
 	min-height: 100%;
 	margin: 0px;
+}
+
+#body {
+	float: left;
+	margin-top: 50px;
+	margin-left: 1%;
+	position:absolute;
 }
 
 footer {

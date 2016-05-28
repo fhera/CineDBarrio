@@ -1,4 +1,4 @@
-package aiss.client.TMDB;
+package aiss.client.vistas;
 
 import java.util.HashMap;
 

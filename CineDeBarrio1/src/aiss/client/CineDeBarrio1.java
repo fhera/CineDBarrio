@@ -32,8 +32,8 @@ public class CineDeBarrio1 implements EntryPoint {
 			p.clear();
 			p.add(new TMDBView());
 		} else if (token == "pelicula") {
-			p.clear();
-			p.add(new PeliculaView(params));
+//			p.clear();
+			p.add(new PeliculaView());
 		}
 	}
 

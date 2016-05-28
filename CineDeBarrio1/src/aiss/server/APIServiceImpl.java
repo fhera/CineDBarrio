@@ -1,7 +1,9 @@
 package aiss.server;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import org.restlet.engine.header.Header;
 import org.restlet.engine.header.HeaderConstants;
@@ -9,14 +11,12 @@ import org.restlet.resource.ClientResource;
 import org.restlet.util.Series;
 
 import aiss.client.APIService;
+import aiss.shared.dominio.TMDB.serie.Serie;
 import aiss.shared.dominio.places.Cines;
 import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
 import aiss.shared.dominio.trakttv.LSeries;
-import aiss.shared.dominio.trakttv.busqueda.ListSeries;
-import aiss.shared.dominio.tviso.AuthToken;
-import aiss.shared.dominio.tviso.BusquedaTviso;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -24,8 +24,6 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 
 	private static final String TMDB_API_KEY = "08f0211eeab73ad077f12a6a627118f8";
-	private static final String TVISO_API_ID = "3486";
-	private static final String TVISO_SECRET = "sFpnqqvtASHvWPKFANZn";
 	private static final String PLACE_API_KEY = "AIzaSyBNlZU09q-jlc79TF43mGFTEqfM8n94USk";
 
 	// Url para rescatar todas las imagenes de una peli.
@@ -56,26 +54,46 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 		return Arrays.asList(series);
 	}
 
-//	// Conseguir una serie con el id de trak-show
-//	public List<LSeries> getSerie() {
-//		List<LSeries> list = new LinkedList<>();
-//		Collection<LSeries> listIds = getSeriesPopulares();
-//		Ids id = new Ids();
-//		for (LSeries s : listIds) {
-//			id = s.getShow().getIds();
-//			ClientResource cr = new ClientResource(
-//					"https://api-v2launch.trakt.tv/search?id_type=trakt-show&id="
-//							+ id);
-//			addHeader(cr, "Content-Type", "application/json");
-//			addHeader(cr, "trakt-api-version", "2");
-//			addHeader(cr, "trakt-api-key",
-//					"b3dd0f403bdd83ae3a465bcc958025f208a511afbcfde738757d877213ed8eeb");
-//			LSeries ls = cr.get(LSeries.class);
-//			list.add(ls);
-//		}
-//
-//		return list;
-//	}
+	// Conseguir la info de cada serie
+	public List<Serie> getSerie() {
+		List<Serie> listSerie = new ArrayList<>();
+		Serie serie = new Serie();
+		Collection<LSeries> series = getSeriesPopulares();
+		String tmdbID = null;
+
+		for (LSeries ls : series) {
+			tmdbID = ls.getShow().getIds().getTmdb().toString();
+			ClientResource cr = new ClientResource(
+					"http://api.themoviedb.org/3/tv/" + tmdbID + "?api_key="
+							+ TMDB_API_KEY + "&laguange=es");
+
+			serie = cr.get(Serie.class);
+			listSerie.add(serie);
+		}
+
+		return listSerie;
+	}
+
+	// // Conseguir una serie con el id de trak-show
+	// public List<LSeries> getSerie() {
+	// List<LSeries> list = new LinkedList<>();
+	// Collection<LSeries> listIds = getSeriesPopulares();
+	// Ids id = new Ids();
+	// for (LSeries s : listIds) {
+	// id = s.getShow().getIds();
+	// ClientResource cr = new ClientResource(
+	// "https://api-v2launch.trakt.tv/search?id_type=trakt-show&id="
+	// + id);
+	// addHeader(cr, "Content-Type", "application/json");
+	// addHeader(cr, "trakt-api-version", "2");
+	// addHeader(cr, "trakt-api-key",
+	// "b3dd0f403bdd83ae3a465bcc958025f208a511afbcfde738757d877213ed8eeb");
+	// LSeries ls = cr.get(LSeries.class);
+	// list.add(ls);
+	// }
+	//
+	// return list;
+	// }
 
 	public Peliculas getPelisDeLaSemana() {
 		ClientResource cr = new ClientResource(
@@ -102,25 +120,6 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 
 	}
 
-	public BusquedaTviso getMediaPorTitulo(String titulo) {
-		AuthToken auth = getAuthTokenTviso();
-		String token = auth.getAuth_token();
-		ClientResource cr = new ClientResource(
-				"https://api.tviso.com/media/search?auth_token=" + token
-						+ "&q=" + titulo);
-		BusquedaTviso media = cr.get(BusquedaTviso.class);
-		return media;
-	}
-
-	// De aqui deberia de sacar dicha String authToken.
-	public AuthToken getAuthTokenTviso() {
-		ClientResource cr = new ClientResource(
-				"https://api.tviso.com/auth_token?id_api=" + TVISO_API_ID
-						+ "&secret=" + TVISO_SECRET);
-		AuthToken authToken = cr.get(AuthToken.class);
-		return authToken;
-	}
-
 	public Cines getCinesCercanos() {
 		ClientResource cr = new ClientResource(
 				"https://maps.googleapis.com/maps/api/place/nearbysearch/json?key="
@@ -130,19 +129,19 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 		return cines;
 	}
 
-	public Collection<ListSeries> getSeries(String serie) {
-		ClientResource cr = new ClientResource(
-				"https://api-v2launch.trakt.tv/search?query=" + serie
-						+ "&type=show");
-
-		addHeader(cr, "Content-Type", "application/json");
-		addHeader(cr, "trakt-api-version", "2");
-		addHeader(cr, "trakt-api-key",
-				"b3dd0f403bdd83ae3a465bcc958025f208a511afbcfde738757d877213ed8eeb");
-		ListSeries[] series = cr.get(ListSeries[].class);
-
-		return Arrays.asList(series);
-	}
+	// public Collection<ListSeries> getSeries(String serie) {
+	// ClientResource cr = new ClientResource(
+	// "https://api-v2launch.trakt.tv/search?query=" + serie
+	// + "&type=show");
+	//
+	// addHeader(cr, "Content-Type", "application/json");
+	// addHeader(cr, "trakt-api-version", "2");
+	// addHeader(cr, "trakt-api-key",
+	// "b3dd0f403bdd83ae3a465bcc958025f208a511afbcfde738757d877213ed8eeb");
+	// ListSeries[] series = cr.get(ListSeries[].class);
+	//
+	// return Arrays.asList(series);
+	// }
 
 	@SuppressWarnings("unchecked")
 	private void addHeader(ClientResource cr, String key, String value) {

@@ -1,6 +1,5 @@
 package aiss.client.vistas;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,11 +8,9 @@ import java.util.Map;
 import aiss.client.APIService;
 import aiss.client.APIServiceAsync;
 import aiss.client.CineDeBarrio1;
+import aiss.shared.dominio.TMDB.serie.Serie;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
-import aiss.shared.dominio.TMDB.serie.*;
-import aiss.shared.dominio.trakttv.serie.ShowTrakt;
-import aiss.shared.dominio.trakttv.serie.Shows;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -78,21 +75,6 @@ public class BusquedaView extends Composite {
 							showSeries(busquedaSeries, result);
 						}
 					});
-			// servicio.getSerieTraducida(busquedaSeries,
-			// new AsyncCallback<Traduccion>() {
-			//
-			// @Override
-			// public void onFailure(Throwable caught) {
-			// // TODO Auto-generated method stub
-			//
-			// }
-			//
-			// @Override
-			// public void onSuccess(Traduccion result) {
-			// // TODO Auto-generated method stub
-			//
-			// }
-			// });
 
 		}
 	}

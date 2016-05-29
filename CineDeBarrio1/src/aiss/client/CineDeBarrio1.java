@@ -5,8 +5,9 @@ import java.util.Map;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-import aiss.client.vistas.BusquedaView;
+import aiss.client.vistas.BusquedaPelisView;
 import aiss.client.vistas.PeliculaView;
+import aiss.client.vistas.SerieView;
 import aiss.client.vistas.TMDBView;
 import aiss.client.vistas.VistaBase;
 
@@ -40,13 +41,14 @@ public class CineDeBarrio1 implements EntryPoint {
 
 		} else if (token == "busqueda") {
 			body.clear();
+			body.add(new BusquedaPelisView(params));
 
-			body.add(new BusquedaView(params));
 		} else if (token == "pelicula") {
 			body.clear();
-
 			body.add(new PeliculaView(params));
+		} else if (token == "serie") {
+			body.clear();
+			body.add(new SerieView(params));
 		}
 	}
-
 }

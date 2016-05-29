@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import aiss.shared.dominio.TMDB.serie.Serie;
+import aiss.shared.dominio.TMDB.trailer.ListaTrailer;
 import aiss.shared.dominio.places.Cines;
 import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
@@ -17,14 +18,16 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface APIService extends RemoteService {
 	// TMDB
 	Peliculas getPelisMejoresValoradas();
-	
+
 	List<Serie> getSerie();
 
 	Peliculas getPelisDeLaSemana();
 
 	Busqueda getBuscarMultimediaTMDB(String busqueda);
 
-	Multimedia getPelicula(Integer id);
+	// Multimedia getPelicula(Integer id);
+
+	ListaTrailer getVideo(Integer id);
 
 	// Trakt.tv
 	Collection<LSeries> getSeriesPopulares();

@@ -6,14 +6,14 @@ import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-import aiss.shared.dominio.tmdb.Pelicula;
+import aiss.shared.dominio.tmdb.buscar.Multimedia;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Peliculas implements Serializable {
 
 	private static final long serialVersionUID = 6682667437260316383L;
 	private Integer page;
-	private List<Pelicula> results = new ArrayList<Pelicula>();
+	private List<Multimedia> results = new ArrayList<Multimedia>();
 	private Integer totalResults;
 	private Integer totalPages;
 
@@ -41,7 +41,7 @@ public class Peliculas implements Serializable {
 	 * 
 	 * @return The results
 	 */
-	public List<Pelicula> getResults() {
+	public List<Multimedia> getResults() {
 		return results;
 	}
 
@@ -50,7 +50,7 @@ public class Peliculas implements Serializable {
 	 * @param results
 	 *            The results
 	 */
-	public void setResults(List<Pelicula> results) {
+	public void setResults(List<Multimedia> results) {
 		this.results = results;
 	}
 

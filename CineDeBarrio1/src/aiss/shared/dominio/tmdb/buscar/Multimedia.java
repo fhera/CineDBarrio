@@ -24,7 +24,6 @@ public class Multimedia implements Serializable {
 	private Boolean video;
 	private Double vote_average;
 	private Integer vote_count;
-	private String media_type;
 	private String first_air_date;
 	private String original_name;
 	private List<String> origin_country = new ArrayList<String>();
@@ -274,23 +273,6 @@ public class Multimedia implements Serializable {
 
 	/**
 	 * 
-	 * @return The mediaType
-	 */
-	public String getMedia_type() {
-		return media_type;
-	}
-
-	/**
-	 * 
-	 * @param mediaType
-	 *            The media_type
-	 */
-	public void setMedia_type(String mediaType) {
-		this.media_type = mediaType;
-	}
-
-	/**
-	 * 
 	 * @return The firstAirDate
 	 */
 	public String getFirst_air_date() {
@@ -366,10 +348,9 @@ public class Multimedia implements Serializable {
 				+ overview + ", releaseDate=" + release_date + ", posterPath="
 				+ poster_path + ", popularity=" + popularity + ", title="
 				+ title + ", video=" + video + ", voteAverage=" + vote_average
-				+ ", voteCount=" + vote_count + ", mediaType=" + media_type
-				+ ", firstAirDate=" + first_air_date + ", originalName="
-				+ original_name + ", originCountry=" + origin_country
-				+ ", name=" + name + "]";
+				+ ", voteCount=" + vote_count + ", firstAirDate="
+				+ first_air_date + ", originalName=" + original_name
+				+ ", originCountry=" + origin_country + ", name=" + name + "]";
 	}
 
 }

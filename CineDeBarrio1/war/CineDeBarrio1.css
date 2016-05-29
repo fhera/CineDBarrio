@@ -41,15 +41,20 @@ BUTTON#busqueda.gwt-Button {
 	right: 1%;
 }
 
+#busqueda .gwt-ListBox {
+	position: fixed;
+	right: 23%;
+}
+
 DIV#titulo.gwt-HTML {
-	padding-top: 30px;
+	font-size: 2em;
 }
 
 TABLE {
-	width: 1180px;
+	width: 100%;
 	margin: auto;
 	position: relative;
-	padding-bottom: 50px;
+	padding-bottom: 30px;
 	padding-right: 5px;
 	border-bottom-color: #333;
 }
@@ -59,23 +64,25 @@ img {
 	margin: 0px 2.5px;
 }
 
-IFRAME#__gwt_historyFrame {
-	position: fixed;
-	float: left;
-	width: 1180px;
-	min-height: 100%;
-	margin: 0px;
+img#poster {
+	height: 300px;
+}
+
+IFRAME.gwt-Frame {
+	width: 600px;
+	height: 300px;
+	margin: 0px 20%;
 }
 
 #body {
 	float: left;
 	margin-top: 50px;
 	margin-left: 1%;
-	position:absolute;
+	position: absolute;
 }
 
 footer {
-	width: 200%;
+	width: 100%;
 	height: 20px;
 	background: #333;
 	border-top: 2px solid #000;

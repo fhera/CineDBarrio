@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import aiss.shared.dominio.TMDB.serie.Serie;
+import aiss.shared.dominio.TMDB.trailer.ListaTrailer;
 import aiss.shared.dominio.places.Cines;
 import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
@@ -24,7 +25,9 @@ public interface APIServiceAsync {
 	void getBuscarMultimediaTMDB(String busqueda,
 			AsyncCallback<Busqueda> callback);
 
-	void getPelicula(Integer id, AsyncCallback<Multimedia> callback);
+	void getVideo(Integer id, AsyncCallback<ListaTrailer> callback);
+
+	// void getPelicula(Integer id, AsyncCallback<Multimedia> callback);
 
 	// Google Place
 	void getCinesCercanos(AsyncCallback<Cines> callback);

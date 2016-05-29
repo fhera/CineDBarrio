@@ -1,8 +1,8 @@
 package aiss.server;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.restlet.engine.header.Header;
@@ -12,11 +12,14 @@ import org.restlet.util.Series;
 
 import aiss.client.APIService;
 import aiss.shared.dominio.TMDB.serie.Serie;
+import aiss.shared.dominio.TMDB.trailer.ListaTrailer;
 import aiss.shared.dominio.places.Cines;
 import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
+import aiss.shared.dominio.trakttv.Ids;
 import aiss.shared.dominio.trakttv.LSeries;
+import aiss.shared.dominio.trakttv.Traduccion;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -25,13 +28,7 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 
 	private static final String TMDB_API_KEY = "08f0211eeab73ad077f12a6a627118f8";
 	private static final String PLACE_API_KEY = "AIzaSyBNlZU09q-jlc79TF43mGFTEqfM8n94USk";
-
-	// Url para rescatar todas las imagenes de una peli.
-	// https://api.themoviedb.org/3/movie/{id}/images?api_key=###&language=en&include_image_language=es
-
-	// Para ver el trailer en youtube:
-	// https://www.youtube.com/watch?v={key}
-	// https://api.themoviedb.org/3/movie/550?api_key=08f0211eeab73ad077f12a6a627118f8&append_to_response=releases,trailers
+	private static final String TRAKTTV_API_KEY = "b3dd0f403bdd83ae3a465bcc958025f208a511afbcfde738757d877213ed8eeb";
 
 	public Peliculas getPelisMejoresValoradas() {
 		ClientResource cr = new ClientResource(
@@ -47,53 +44,60 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 
 		addHeader(cr, "Content-Type", "application/json");
 		addHeader(cr, "trakt-api-version", "2");
-		addHeader(cr, "trakt-api-key",
-				"b3dd0f403bdd83ae3a465bcc958025f208a511afbcfde738757d877213ed8eeb");
+		addHeader(cr, "trakt-api-key", TRAKTTV_API_KEY);
 		LSeries[] series = cr.get(LSeries[].class);
 
 		return Arrays.asList(series);
 	}
 
-	// Conseguir la info de cada serie
+	// Conseguir una serie con el id de trak-show
 	public List<Serie> getSerie() {
-		List<Serie> listSerie = new ArrayList<>();
-		Serie serie = new Serie();
-		Collection<LSeries> series = getSeriesPopulares();
-		String tmdbID = null;
-
-		for (LSeries ls : series) {
-			tmdbID = ls.getShow().getIds().getTmdb().toString();
+		List<Serie> list = new LinkedList<>();
+		Collection<LSeries> listIds = getSeriesPopulares();
+		Ids id = new Ids();
+		for (LSeries s : listIds) {
+			id = s.getShow().getIds();
 			ClientResource cr = new ClientResource(
-					"http://api.themoviedb.org/3/tv/" + tmdbID + "?api_key="
-							+ TMDB_API_KEY + "&laguange=es");
-
-			serie = cr.get(Serie.class);
-			listSerie.add(serie);
+					"https://api-v2launch.trakt.tv/search?id_type=trakt-show&id="
+							+ id);
+			addHeader(cr, "Content-Type", "application/json");
+			addHeader(cr, "trakt-api-version", "2");
+			addHeader(cr, "trakt-api-key", TRAKTTV_API_KEY);
+			Serie serie = cr.get(Serie.class);
+			list.add(serie);
 		}
 
-		return listSerie;
+		return list;
 	}
 
-	// // Conseguir una serie con el id de trak-show
-	// public List<LSeries> getSerie() {
-	// List<LSeries> list = new LinkedList<>();
-	// Collection<LSeries> listIds = getSeriesPopulares();
-	// Ids id = new Ids();
-	// for (LSeries s : listIds) {
-	// id = s.getShow().getIds();
+	// // Conseguir la info de cada serie
+	// public List<Serie> getSerie() {
+	// List<Serie> listSerie = new ArrayList<>();
+	// Serie serie = new Serie();
+	// Collection<LSeries> series = getSeriesPopulares();
+	// String tmdbID = null;
+	//
+	// for (LSeries ls : series) {
+	// tmdbID = ls.getShow().getIds().getTmdb().toString();
 	// ClientResource cr = new ClientResource(
-	// "https://api-v2launch.trakt.tv/search?id_type=trakt-show&id="
-	// + id);
-	// addHeader(cr, "Content-Type", "application/json");
-	// addHeader(cr, "trakt-api-version", "2");
-	// addHeader(cr, "trakt-api-key",
-	// "b3dd0f403bdd83ae3a465bcc958025f208a511afbcfde738757d877213ed8eeb");
-	// LSeries ls = cr.get(LSeries.class);
-	// list.add(ls);
+	// "http://api.themoviedb.org/3/tv/" + tmdbID + "?api_key="
+	// + TMDB_API_KEY + "&laguange=es");
+	//
+	// serie = cr.get(Serie.class);
+	// listSerie.add(serie);
 	// }
 	//
-	// return list;
+	// return listSerie;
 	// }
+
+	public Traduccion getSerieTraducida(String nombreSerie) {
+		ClientResource cr = new ClientResource(
+				"https://api-v2launch.trakt.tv/shows/" + nombreSerie
+						+ "/translations/es");
+
+		Traduccion trad = cr.get(Traduccion.class);
+		return trad;
+	}
 
 	public Peliculas getPelisDeLaSemana() {
 		ClientResource cr = new ClientResource(
@@ -118,6 +122,14 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 		Multimedia peli = cr.get(Multimedia.class);
 		return peli;
 
+	}
+
+	public ListaTrailer getVideo(Integer id) {
+		ClientResource cr = new ClientResource(
+				"http://api.themoviedb.org/3/movie/" + id + "/videos?api_key="
+						+ TMDB_API_KEY + "&language=es");
+		ListaTrailer trailer = cr.get(ListaTrailer.class);
+		return trailer;
 	}
 
 	public Cines getCinesCercanos() {
@@ -152,8 +164,6 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 			cr.getRequestAttributes().put(HeaderConstants.ATTRIBUTE_HEADERS,
 					headers);
 		}
-
 		headers.add(key, value);
-
 	}
 }

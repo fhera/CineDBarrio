@@ -16,39 +16,39 @@ public class Serie implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 7457433909733048501L;
-	private String backdropPath;
-	private List<CreatedBy> createdBy = new ArrayList<CreatedBy>();
-	private List<Integer> episodeRunTime = new ArrayList<Integer>();
-	private String firstAirDate;
+	private String backdrop_path;
+	private List<CreatedBy> created_by = new ArrayList<CreatedBy>();
+	private List<Integer> episode_run_time = new ArrayList<Integer>();
+	private String first_air_date;
 	private List<Genre> genres = new ArrayList<Genre>();
 	private String homepage;
 	private Integer id;
-	private Boolean inProduction;
+	private Boolean in_production;
 	private List<String> languages = new ArrayList<String>();
-	private String lastAirDate;
+	private String last_air_date;
 	private String name;
 	private List<Network> networks = new ArrayList<Network>();
-	private Integer numberOfEpisodes;
-	private Integer numberOfSeasons;
-	private List<String> originCountry = new ArrayList<String>();
-	private String originalLanguage;
-	private String originalName;
+	private Integer number_of_episodes;
+	private Integer number_of_seasons;
+	private List<String> origin_country = new ArrayList<String>();
+	private String original_language;
+	private String original_name;
 	private String overview;
 	private Double popularity;
 	private String poster_path;
-	private List<ProductionCompany> productionCompanies = new ArrayList<ProductionCompany>();
+	private List<ProductionCompany> production_companies = new ArrayList<ProductionCompany>();
 	private List<Season> seasons = new ArrayList<Season>();
 	private String status;
 	private String type;
-	private Double voteAverage;
-	private Integer voteCount;
+	private Double vote_average;
+	private Integer vote_count;
 
 	/**
 	 * 
 	 * @return The backdropPath
 	 */
-	public String getBackdropPath() {
-		return backdropPath;
+	public String getBackdrop_path() {
+		return backdrop_path;
 	}
 
 	/**
@@ -56,16 +56,16 @@ public class Serie implements Serializable {
 	 * @param backdropPath
 	 *            The backdrop_path
 	 */
-	public void setBackdropPath(String backdropPath) {
-		this.backdropPath = backdropPath;
+	public void setBackdrop_path(String backdropPath) {
+		this.backdrop_path = backdropPath;
 	}
 
 	/**
 	 * 
 	 * @return The createdBy
 	 */
-	public List<CreatedBy> getCreatedBy() {
-		return createdBy;
+	public List<CreatedBy> getCreated_by() {
+		return created_by;
 	}
 
 	/**
@@ -73,16 +73,16 @@ public class Serie implements Serializable {
 	 * @param createdBy
 	 *            The created_by
 	 */
-	public void setCreatedBy(List<CreatedBy> createdBy) {
-		this.createdBy = createdBy;
+	public void setCreated_by(List<CreatedBy> createdBy) {
+		this.created_by = createdBy;
 	}
 
 	/**
 	 * 
 	 * @return The episodeRunTime
 	 */
-	public List<Integer> getEpisodeRunTime() {
-		return episodeRunTime;
+	public List<Integer> getEpisode_run_time() {
+		return episode_run_time;
 	}
 
 	/**
@@ -90,16 +90,16 @@ public class Serie implements Serializable {
 	 * @param episodeRunTime
 	 *            The episode_run_time
 	 */
-	public void setEpisodeRunTime(List<Integer> episodeRunTime) {
-		this.episodeRunTime = episodeRunTime;
+	public void setEpisode_run_time(List<Integer> episodeRunTime) {
+		this.episode_run_time = episodeRunTime;
 	}
 
 	/**
 	 * 
 	 * @return The firstAirDate
 	 */
-	public String getFirstAirDate() {
-		return firstAirDate;
+	public String getFirst_air_date() {
+		return first_air_date;
 	}
 
 	/**
@@ -107,8 +107,8 @@ public class Serie implements Serializable {
 	 * @param firstAirDate
 	 *            The first_air_date
 	 */
-	public void setFirstAirDate(String firstAirDate) {
-		this.firstAirDate = firstAirDate;
+	public void setFirst_air_date(String firstAirDate) {
+		this.first_air_date = firstAirDate;
 	}
 
 	/**
@@ -167,7 +167,7 @@ public class Serie implements Serializable {
 	 * @return The inProduction
 	 */
 	public Boolean getInProduction() {
-		return inProduction;
+		return in_production;
 	}
 
 	/**
@@ -175,8 +175,8 @@ public class Serie implements Serializable {
 	 * @param inProduction
 	 *            The in_production
 	 */
-	public void setInProduction(Boolean inProduction) {
-		this.inProduction = inProduction;
+	public void setIn_production(Boolean inProduction) {
+		this.in_production = inProduction;
 	}
 
 	/**
@@ -200,8 +200,8 @@ public class Serie implements Serializable {
 	 * 
 	 * @return The lastAirDate
 	 */
-	public String getLastAirDate() {
-		return lastAirDate;
+	public String getLast_air_date() {
+		return last_air_date;
 	}
 
 	/**
@@ -209,8 +209,8 @@ public class Serie implements Serializable {
 	 * @param lastAirDate
 	 *            The last_air_date
 	 */
-	public void setLastAirDate(String lastAirDate) {
-		this.lastAirDate = lastAirDate;
+	public void setLast_air_date(String lastAirDate) {
+		this.last_air_date = lastAirDate;
 	}
 
 	/**
@@ -251,8 +251,8 @@ public class Serie implements Serializable {
 	 * 
 	 * @return The numberOfEpisodes
 	 */
-	public Integer getNumberOfEpisodes() {
-		return numberOfEpisodes;
+	public Integer getNumber_of_episodes() {
+		return number_of_episodes;
 	}
 
 	/**
@@ -260,16 +260,16 @@ public class Serie implements Serializable {
 	 * @param numberOfEpisodes
 	 *            The number_of_episodes
 	 */
-	public void setNumberOfEpisodes(Integer numberOfEpisodes) {
-		this.numberOfEpisodes = numberOfEpisodes;
+	public void setNumber_of_episodes(Integer numberOfEpisodes) {
+		this.number_of_episodes = numberOfEpisodes;
 	}
 
 	/**
 	 * 
 	 * @return The numberOfSeasons
 	 */
-	public Integer getNumberOfSeasons() {
-		return numberOfSeasons;
+	public Integer getNumber_of_seasons() {
+		return number_of_seasons;
 	}
 
 	/**
@@ -277,16 +277,16 @@ public class Serie implements Serializable {
 	 * @param numberOfSeasons
 	 *            The number_of_seasons
 	 */
-	public void setNumberOfSeasons(Integer numberOfSeasons) {
-		this.numberOfSeasons = numberOfSeasons;
+	public void setNumber_of_seasons(Integer numberOfSeasons) {
+		this.number_of_seasons = numberOfSeasons;
 	}
 
 	/**
 	 * 
 	 * @return The originCountry
 	 */
-	public List<String> getOriginCountry() {
-		return originCountry;
+	public List<String> getOrigin_country() {
+		return origin_country;
 	}
 
 	/**
@@ -294,16 +294,16 @@ public class Serie implements Serializable {
 	 * @param originCountry
 	 *            The origin_country
 	 */
-	public void setOriginCountry(List<String> originCountry) {
-		this.originCountry = originCountry;
+	public void setOrigin_country(List<String> originCountry) {
+		this.origin_country = originCountry;
 	}
 
 	/**
 	 * 
 	 * @return The originalLanguage
 	 */
-	public String getOriginalLanguage() {
-		return originalLanguage;
+	public String getOriginal_language() {
+		return original_language;
 	}
 
 	/**
@@ -311,16 +311,16 @@ public class Serie implements Serializable {
 	 * @param originalLanguage
 	 *            The original_language
 	 */
-	public void setOriginalLanguage(String originalLanguage) {
-		this.originalLanguage = originalLanguage;
+	public void setOriginal_language(String originalLanguage) {
+		this.original_language = originalLanguage;
 	}
 
 	/**
 	 * 
 	 * @return The originalName
 	 */
-	public String getOriginalName() {
-		return originalName;
+	public String getOriginal_name() {
+		return original_name;
 	}
 
 	/**
@@ -328,8 +328,8 @@ public class Serie implements Serializable {
 	 * @param originalName
 	 *            The original_name
 	 */
-	public void setOriginalName(String originalName) {
-		this.originalName = originalName;
+	public void setOriginal_name(String originalName) {
+		this.original_name = originalName;
 	}
 
 	/**
@@ -387,8 +387,8 @@ public class Serie implements Serializable {
 	 * 
 	 * @return The productionCompanies
 	 */
-	public List<ProductionCompany> getProductionCompanies() {
-		return productionCompanies;
+	public List<ProductionCompany> getProduction_companies() {
+		return production_companies;
 	}
 
 	/**
@@ -396,9 +396,9 @@ public class Serie implements Serializable {
 	 * @param productionCompanies
 	 *            The production_companies
 	 */
-	public void setProductionCompanies(
+	public void setProduction_companies(
 			List<ProductionCompany> productionCompanies) {
-		this.productionCompanies = productionCompanies;
+		this.production_companies = productionCompanies;
 	}
 
 	/**
@@ -456,8 +456,8 @@ public class Serie implements Serializable {
 	 * 
 	 * @return The voteAverage
 	 */
-	public Double getVoteAverage() {
-		return voteAverage;
+	public Double getVote_average() {
+		return vote_average;
 	}
 
 	/**
@@ -465,16 +465,16 @@ public class Serie implements Serializable {
 	 * @param voteAverage
 	 *            The vote_average
 	 */
-	public void setVoteAverage(Double voteAverage) {
-		this.voteAverage = voteAverage;
+	public void setVote_average(Double voteAverage) {
+		this.vote_average = voteAverage;
 	}
 
 	/**
 	 * 
 	 * @return The voteCount
 	 */
-	public Integer getVoteCount() {
-		return voteCount;
+	public Integer getVote_count() {
+		return vote_count;
 	}
 
 	/**
@@ -482,8 +482,8 @@ public class Serie implements Serializable {
 	 * @param voteCount
 	 *            The vote_count
 	 */
-	public void setVoteCount(Integer voteCount) {
-		this.voteCount = voteCount;
+	public void setVote_count(Integer voteCount) {
+		this.vote_count = voteCount;
 	}
 
 }

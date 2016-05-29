@@ -1,0 +1,2 @@
+serviceClass: aiss.client.APIService
+path: 01FA98E565A3B0C805D2DA36251F6847.gwt.rpc

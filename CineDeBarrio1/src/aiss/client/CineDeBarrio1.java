@@ -35,19 +35,23 @@ public class CineDeBarrio1 implements EntryPoint {
 		if (token == "init") {
 			busqueda.clear();
 			body.clear();
+			RootPanel.get().clear();
 
 			busqueda.add(new VistaBase(params));
 			body.add(new MainView(params));
 
 		} else if (token == "busqueda") {
 			body.clear();
+			RootPanel.get().clear();
 			body.add(new BusquedaView(params));
 
 		} else if (token == "pelicula") {
 			body.clear();
+			RootPanel.get().clear();
 			body.add(new PeliculaView(params));
 		} else if (token == "serie") {
 			body.clear();
+			RootPanel.get().clear();
 			body.add(new SerieView(params));
 		}
 	}

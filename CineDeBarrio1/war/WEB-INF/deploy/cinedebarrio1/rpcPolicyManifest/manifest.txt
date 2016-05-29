@@ -1,2 +1,3 @@
 # Module cinedebarrio1
 # RPC service class, partial path of RPC policy file
+aiss.client.APIService, 01FA98E565A3B0C805D2DA36251F6847.gwt.rpc

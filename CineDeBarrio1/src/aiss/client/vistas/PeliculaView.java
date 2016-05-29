@@ -20,6 +20,7 @@ import com.google.gwt.geolocation.client.PositionError;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Frame;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -90,7 +91,12 @@ public class PeliculaView extends Composite {
 
 		primeraFila.add(poster);
 
+		FlexTable segundaFila = new FlexTable();
+
+		segundaFila.setHTML(0, 0, p.getOverview());
+
 		panel.add(primeraFila);
+		panel.add(segundaFila);
 	}
 
 	// A partir de aquí estan los métodos

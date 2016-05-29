@@ -5,8 +5,8 @@ import java.util.Map;
 import aiss.shared.dominio.TMDB.serie.Serie;
 
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -19,7 +19,7 @@ public class SerieView extends Composite {
 		initWidget(panel);
 		Serie serie = (Serie) params.get("serie");
 
-		HorizontalPanel primeraFila = new HorizontalPanel();
+		FlexTable primeraFila = new FlexTable();
 
 		HTML title = new HTML();
 		title.setText("Serie: " + serie.getName());
@@ -32,7 +32,8 @@ public class SerieView extends Composite {
 		poster.setUrl("http://image.tmdb.org/t/p/w500" + serie.getPoster_path());
 		poster.getElement().setAttribute("id", "poster");
 
-		primeraFila.add(poster);
+		primeraFila.setHTML(0, 0, "" + poster);
+		primeraFila.setHTML(0, 1, serie.getOverview());
 
 		panel.add(primeraFila);
 	}

@@ -74,10 +74,18 @@ public class VistaBase extends Composite {
 			public void onClick(ClickEvent event) {
 				etiquetaEstado.setText("Buscando...");
 
-				Map<String, Object> map = new HashMap<String, Object>();
-				map.put("busqueda", searchField.getText());
+				if (seleccionaBusqueda.getSelectedItemText() == "Peliculas") {
 
-				CineDeBarrio1.go("busqueda", map);
+					Map<String, Object> map = new HashMap<String, Object>();
+					map.put("busquedaPeliculas", searchField.getText());
+
+					CineDeBarrio1.go("busqueda", map);
+				} else {
+					Map<String, Object> map = new HashMap<String, Object>();
+					map.put("busquedaSeries", searchField.getText());
+
+					CineDeBarrio1.go("busqueda", map);
+				}
 
 				searchField.setText("");
 				etiquetaEstado.setText("");

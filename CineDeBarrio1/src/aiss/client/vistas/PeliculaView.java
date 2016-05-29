@@ -9,7 +9,6 @@ import aiss.shared.dominio.TMDB.trailer.Trailer;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.media.client.Video;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;

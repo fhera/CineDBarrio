@@ -1,8 +1,8 @@
 package aiss.server;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.restlet.engine.header.Header;
@@ -17,9 +17,9 @@ import aiss.shared.dominio.places.Cines;
 import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
 import aiss.shared.dominio.tmdb.buscar.Multimedia;
-import aiss.shared.dominio.trakttv.Ids;
 import aiss.shared.dominio.trakttv.LSeries;
 import aiss.shared.dominio.trakttv.Traduccion;
+import aiss.shared.dominio.trakttv.serie.Shows;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -50,45 +50,71 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 		return Arrays.asList(series);
 	}
 
-	// Conseguir una serie con el id de trak-show
+	// Conseguir la info de cada serie
 	public List<Serie> getSerie() {
-		List<Serie> list = new LinkedList<>();
-		Collection<LSeries> listIds = getSeriesPopulares();
-		Ids id = new Ids();
-		for (LSeries s : listIds) {
-			id = s.getShow().getIds();
+		List<Serie> listSerie = new ArrayList<>();
+		Serie serie = new Serie();
+		Collection<LSeries> series = getSeriesPopulares();
+		String tmdbID = null;
+
+		for (LSeries ls : series) {
+			tmdbID = ls.getShow().getIds().getTmdb().toString();
 			ClientResource cr = new ClientResource(
-					"https://api-v2launch.trakt.tv/search?id_type=trakt-show&id="
-							+ id);
-			addHeader(cr, "Content-Type", "application/json");
-			addHeader(cr, "trakt-api-version", "2");
-			addHeader(cr, "trakt-api-key", TRAKTTV_API_KEY);
-			Serie serie = cr.get(Serie.class);
-			list.add(serie);
+					"http://api.themoviedb.org/3/tv/" + tmdbID + "?api_key="
+							+ TMDB_API_KEY + "&laguange=es");
+
+			serie = cr.get(Serie.class);
+			listSerie.add(serie);
 		}
 
-		return list;
+		return listSerie;
+	}
+	
+	public Collection<Shows> getSerieTrakt(String serie) {
+		ClientResource cr = new ClientResource(
+				"https://api-v2launch.trakt.tv/search?query=" + serie
+						+ "&type=show");
+
+		addHeader(cr, "Content-Type", "application/json");
+		addHeader(cr, "trakt-api-version", "2");
+		addHeader(cr, "trakt-api-key", TRAKTTV_API_KEY);
+		Shows[] series = cr.get(Shows[].class);
+
+		return Arrays.asList(series);
 	}
 
-	// // Conseguir la info de cada serie
-	// public List<Serie> getSerie() {
-	// List<Serie> listSerie = new ArrayList<>();
-	// Serie serie = new Serie();
-	// Collection<LSeries> series = getSeriesPopulares();
-	// String tmdbID = null;
-	//
-	// for (LSeries ls : series) {
-	// tmdbID = ls.getShow().getIds().getTmdb().toString();
-	// ClientResource cr = new ClientResource(
-	// "http://api.themoviedb.org/3/tv/" + tmdbID + "?api_key="
-	// + TMDB_API_KEY + "&laguange=es");
-	//
-	// serie = cr.get(Serie.class);
-	// listSerie.add(serie);
-	// }
-	//
-	// return listSerie;
-	// }
+	public Collection<LSeries> getBuscaSeries(String serie) {
+		ClientResource cr = new ClientResource(
+				"https://api-v2launch.trakt.tv/search?query=" + serie
+						+ "&type=show");
+
+		addHeader(cr, "Content-Type", "application/json");
+		addHeader(cr, "trakt-api-version", "2");
+		addHeader(cr, "trakt-api-key", TRAKTTV_API_KEY);
+		LSeries[] series = cr.get(LSeries[].class);
+
+		return Arrays.asList(series);
+	}
+
+	// Conseguir la info de cada serie
+	public List<Serie> getBuscaSerie(String serie) {
+		List<Serie> listSerie = new ArrayList<>();
+		Collection<LSeries> series = getBuscaSeries(serie);
+		String tmdbID = null;
+		Serie s = new Serie();
+
+		for (LSeries ls : series) {
+			tmdbID = ls.getShow().getIds().getTmdb().toString();
+			ClientResource cr = new ClientResource(
+					"http://api.themoviedb.org/3/tv/" + tmdbID + "?api_key="
+							+ TMDB_API_KEY + "&laguange=es");
+
+			s = cr.get(Serie.class);
+			listSerie.add(s);
+		}
+
+		return listSerie;
+	}
 
 	public Traduccion getSerieTraducida(String nombreSerie) {
 		ClientResource cr = new ClientResource(
@@ -140,20 +166,6 @@ public class APIServiceImpl extends RemoteServiceServlet implements APIService {
 		Cines cines = cr.get(Cines.class);
 		return cines;
 	}
-
-	// public Collection<ListSeries> getSeries(String serie) {
-	// ClientResource cr = new ClientResource(
-	// "https://api-v2launch.trakt.tv/search?query=" + serie
-	// + "&type=show");
-	//
-	// addHeader(cr, "Content-Type", "application/json");
-	// addHeader(cr, "trakt-api-version", "2");
-	// addHeader(cr, "trakt-api-key",
-	// "b3dd0f403bdd83ae3a465bcc958025f208a511afbcfde738757d877213ed8eeb");
-	// ListSeries[] series = cr.get(ListSeries[].class);
-	//
-	// return Arrays.asList(series);
-	// }
 
 	@SuppressWarnings("unchecked")
 	private void addHeader(ClientResource cr, String key, String value) {

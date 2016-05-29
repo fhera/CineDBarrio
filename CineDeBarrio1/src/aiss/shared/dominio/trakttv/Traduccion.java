@@ -1,10 +1,19 @@
 package aiss.shared.dominio.trakttv;
 
+import java.io.Serializable;
+
 import javax.annotation.Generated;
 
-@Generated("org.jsonschema2pojo")
-public class Traduccion {
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+@Generated("org.jsonschema2pojo")
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Traduccion implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6194225508848927031L;
 	private String title;
 	private String overview;
 	private String language;

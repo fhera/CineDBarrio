@@ -28,6 +28,7 @@ public class SerieView extends Composite {
 		panel.add(title);
 
 		Image poster = new Image();
+
 		poster.setUrl("http://image.tmdb.org/t/p/w500" + serie.getPoster_path());
 		poster.getElement().setAttribute("id", "poster");
 

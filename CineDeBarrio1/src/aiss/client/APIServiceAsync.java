@@ -8,8 +8,9 @@ import aiss.shared.dominio.TMDB.trailer.ListaTrailer;
 import aiss.shared.dominio.places.Cines;
 import aiss.shared.dominio.tmdb.Peliculas;
 import aiss.shared.dominio.tmdb.buscar.Busqueda;
-import aiss.shared.dominio.tmdb.buscar.Multimedia;
 import aiss.shared.dominio.trakttv.LSeries;
+import aiss.shared.dominio.trakttv.Traduccion;
+import aiss.shared.dominio.trakttv.serie.Shows;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
@@ -27,6 +28,8 @@ public interface APIServiceAsync {
 
 	void getVideo(Integer id, AsyncCallback<ListaTrailer> callback);
 
+	void getBuscaSerie(String serie, AsyncCallback<List<Serie>> callback);
+
 	// void getPelicula(Integer id, AsyncCallback<Multimedia> callback);
 
 	// Google Place
@@ -34,5 +37,10 @@ public interface APIServiceAsync {
 
 	// Trakt.tv
 	void getSeriesPopulares(AsyncCallback<Collection<LSeries>> callback);
+
+	void getSerieTrakt(String serie, AsyncCallback<Collection<Shows>> callback);
+
+	void getSerieTraducida(String nombreSerie,
+			AsyncCallback<Traduccion> callback);
 
 }

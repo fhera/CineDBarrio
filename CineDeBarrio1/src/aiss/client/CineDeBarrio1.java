@@ -5,10 +5,10 @@ import java.util.Map;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-import aiss.client.vistas.BusquedaPelisView;
+import aiss.client.vistas.BusquedaView;
 import aiss.client.vistas.PeliculaView;
 import aiss.client.vistas.SerieView;
-import aiss.client.vistas.TMDBView;
+import aiss.client.vistas.MainView;
 import aiss.client.vistas.VistaBase;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -37,11 +37,11 @@ public class CineDeBarrio1 implements EntryPoint {
 			body.clear();
 
 			busqueda.add(new VistaBase(params));
-			body.add(new TMDBView(params));
+			body.add(new MainView(params));
 
 		} else if (token == "busqueda") {
 			body.clear();
-			body.add(new BusquedaPelisView(params));
+			body.add(new BusquedaView(params));
 
 		} else if (token == "pelicula") {
 			body.clear();

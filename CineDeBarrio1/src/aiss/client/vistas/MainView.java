@@ -23,7 +23,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class TMDBView extends Composite {
+public class MainView extends Composite {
 
 	private final APIServiceAsync servicio = GWT.create(APIService.class);
 
@@ -31,7 +31,7 @@ public class TMDBView extends Composite {
 	private final FlexTable pelisPanel;
 	private final FlexTable seriesPanel;
 
-	public TMDBView(Map<String, Object> params) {
+	public MainView(Map<String, Object> params) {
 
 		// Panel principal e inicialización de la vista.
 		panel = new VerticalPanel();

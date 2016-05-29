@@ -80,6 +80,13 @@ IFRAME.gwt-Frame {
 	margin-left: 1%;
 	position: absolute;
 }
+#map_canvas {
+	float: center;
+	margin-top: 400px;
+    margin-bottom: 100px;
+	margin-left: 2%;
+	position: absolute;
+}
 
 #map_canvas {
 	float: center;

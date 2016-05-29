@@ -167,6 +167,7 @@ public class PeliculaView extends Composite {
 	}
 
 	private static void showUserPosition() {
+		/** TODO: Mostrar posicion del usuario */
 
 		if (Geolocation.isSupported()) {
 			Geolocation.getIfSupported().getCurrentPosition(

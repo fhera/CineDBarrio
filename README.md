@@ -1,2 +1,2 @@
 # CineDBarrio
-Proyecto de una de las asignaturas de la carrera de Ingeniería de Software.
+Proyecto de la asignatura de ISSI de la carrera de Ingeniería de Software.
